@@ -1,5 +1,10 @@
 export enum RootScreens {
   MAIN = "Main",
-  ROUTE = "Routing",
   WELCOME = "Welcome",
+}
+
+export enum RoutingScreens {
+  ROUTE = "Routing",
+  ROUTE1 = "Routing1",
+  ROUTE2 = "Routing2",
 }
