@@ -1,43 +1,22 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { HStack, Spinner, Heading } from "native-base";
-import { useLazyGetUserQuery, User } from "@/Services";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { RoutingScreens } from "..";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RoutingStackParamList } from "@/Navigation/Routing";
 
-export interface IRoutingProps {
-  data: User | undefined;
-  isLoading: boolean;
-}
+type RoutingScreenNavigatorProps = NativeStackScreenProps<
+  RoutingStackParamList,
+  RoutingScreens.ROUTE
+>;
 
-export const Routing = () => {
-  const [userId, setUserId] = useState("9");
-
-  const [fetchOne, { data, isSuccess, isLoading, isFetching, error }] =
-  useLazyGetUserQuery();
-
-  useEffect(() => {
-    fetchOne(userId);
-  }, [fetchOne, userId]);
+export const Routing = ({
+  navigation,
+}: RoutingScreenNavigatorProps)  => {
   
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      {isLoading ? (
-        <HStack space={2} justifyContent="center">
-          <Spinner accessibilityLabel="Loading posts" />
-          <Heading color="primary.500" fontSize="md">
-            {i18n.t(LocalizationKey.LOADING)}
-          </Heading>
-        </HStack>
-      ) : (
-        <>
-          <Text>{i18n.t(LocalizationKey.HOME)}</Text>
-          <Heading color="primary.500" fontSize="md">
-            {data?.username}
-          </Heading>
-        </>
-      )}
+      <Button title="To Routing 1" onPress={() => navigation.navigate(RoutingScreens.ROUTE1)} ></Button>
     </View>
   );
 };

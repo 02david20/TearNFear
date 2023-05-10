@@ -1,6 +1,6 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
@@ -9,18 +9,15 @@ import { RoutingStackParamList } from "@/Navigation/Routing";
 import { RoutingScreens } from "..";
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
-  RoutingScreens.ROUTE1
+  RoutingScreens.ROUTE2
 >;
 
-export const Routing1 = ({
+export const Routing2 = ({
   navigation,
 }: RoutingScreenNavigatorProps)   => {
   return (
     <View style={styles.container}>
-      <Text>Routing 1</Text>
-      <View style={styles.container}>
-        <Button title="To Routing 2" onPress={() => navigation.navigate(RoutingScreens.ROUTE2)} ></Button>
-    </View>
+      <Text>Routing 2</Text>
     </View>
   );
 };
