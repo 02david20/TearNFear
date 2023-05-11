@@ -9,9 +9,9 @@ import { RoutingScreens } from "@/Screens";
 import { Routing2 } from "@/Screens/Routing/Routing2";
 
 export type RoutingStackParamList = {
-  [RoutingScreens.ROUTE]: undefined;
-  [RoutingScreens.ROUTE1]: undefined;
   [RoutingScreens.ROUTE2]: undefined;
+  [RoutingScreens.ROUTE1]: undefined;
+  [RoutingScreens.ROUTE]: undefined;
 };
 
 const RoutingStack = createNativeStackNavigator<RoutingStackParamList>()
