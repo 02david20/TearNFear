@@ -9,7 +9,7 @@ import { RoutingStackParamList } from "@/Navigation/Routing";
 import { RoutingScreens } from "..";
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
-  RoutingScreens.ROUTE1
+  RoutingScreens.ROUTE2
 >;
 
 export const Routing1 = ({

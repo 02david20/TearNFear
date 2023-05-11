@@ -6,7 +6,7 @@ import { store, persistor } from "@/Store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ApplicationNavigator } from "./Navigation";
-import './index.css'
+import { Text } from "react-native-svg";
 
 i18n.locale = Localization.locale;
 i18n.enableFallback = true;
@@ -18,6 +18,7 @@ export default function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ApplicationNavigator />
+          <Text className={"bg-darkblue"}>Hello</Text>
         </PersistGate>
       </Provider>
     </NativeBaseProvider>
