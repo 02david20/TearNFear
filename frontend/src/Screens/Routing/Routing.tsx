@@ -7,15 +7,14 @@ import { RoutingStackParamList } from "@/Navigation/Routing";
 
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
-  RoutingScreens.ROUTE
+  RoutingScreens.ROUTE1
 >;
 
 export const Routing = ({
   navigation,
 }: RoutingScreenNavigatorProps)  => {
-  
   return (
-    <View style={styles.container}>
+    <View className="flex-1 items-center justify-center bg-white" style={styles.container}>
       <Button title="To Routing 1" onPress={() => navigation.navigate(RoutingScreens.ROUTE1)} ></Button>
     </View>
   );
