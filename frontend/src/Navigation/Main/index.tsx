@@ -2,18 +2,26 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeContainer } from "@/Screens/Home";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faHome, faMapMarker, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faMapMarker, faMapMarkerAlt, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import{ StyleSheet } from "react-native";
 import { background } from "native-base/lib/typescript/theme/styled-system";
 import { RoutingNavigator } from "../Routing";
-const Tab = createBottomTabNavigator();
+import { MainScreens } from "@/Screens";
 
+export type BottomTabParamList = {
+  [MainScreens.FIND]: undefined;
+  [MainScreens.HOME]: undefined;
+  [MainScreens.MYACCOUNT]: undefined;
+  [MainScreens.ROUTING]: undefined;
+};
+
+const Tab = createBottomTabNavigator();
 
 // @refresh reset
 export const MainNavigator = () => {
   return (
-  <Tab.Navigator>
-    <Tab.Screen name="Home" component={HomeContainer}
+  <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Screen name={MainScreens.HOME} component={HomeContainer}
       options={{
         tabBarLabel: "Home",
         tabBarIcon: ({ color }) => (
@@ -24,15 +32,15 @@ export const MainNavigator = () => {
         ),
       }}
     />  
-    <Tab.Screen name="Find Station" component={HomeContainer} 
+    <Tab.Screen name={MainScreens.FIND} component={HomeContainer} 
       options={{
         tabBarLabel: "Find Station",
         tabBarIcon: ({ color }) => (
-          <FontAwesomeIcon icon={faMapMarker} />
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
         ),
       }}
     />  
-    <Tab.Screen name="Routing" component={RoutingNavigator} 
+    <Tab.Screen name={MainScreens.ROUTING} component={RoutingNavigator} 
       options={{
         tabBarLabel: "Routing",
         tabBarIcon: ({ color }) => (
@@ -40,7 +48,7 @@ export const MainNavigator = () => {
         ),
       }}
     />  
-    <Tab.Screen name="My Account" component={HomeContainer} 
+    <Tab.Screen name={MainScreens.MYACCOUNT} component={HomeContainer} 
       options={{
         tabBarLabel: "My Account",
         tabBarIcon: ({ color }) => (
