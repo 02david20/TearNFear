@@ -15,6 +15,6 @@ export const WelcomeContainer = ({
   const onNavigate = (screen: RootScreens) => {
     navigation.navigate(screen);
   };
-
+  const hello = 1;
   return <Welcome onNavigate={onNavigate} />;
 };

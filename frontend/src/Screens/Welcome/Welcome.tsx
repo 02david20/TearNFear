@@ -6,7 +6,7 @@ import { Button } from "native-base";
 import { RootScreens } from "..";
 
 export const Welcome = (props: {
-  onNavigate: (string: RootScreens) => void;
+  onNavigate: (string: RootScreens) => void
 }) => {
   return (
     <View style={styles.container}>

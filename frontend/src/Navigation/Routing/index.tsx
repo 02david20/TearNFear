@@ -4,9 +4,11 @@ import { HomeContainer } from "@/Screens/Home";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Routing1 } from "@/Screens/Routing/Routing1";
-import { Routing } from "@/Screens/Routing/Routing";
 import { RoutingScreens } from "@/Screens";
 import { Routing2 } from "@/Screens/Routing/Routing2";
+import { RoutingContainer } from "@/Screens/Routing/RoutingContainer";
+import { StatusBar } from "native-base";
+import { Point } from "react-native-maps";
 
 export type RoutingStackParamList = {
   [RoutingScreens.ROUTE2]: undefined;
@@ -17,9 +19,10 @@ export type RoutingStackParamList = {
 const RoutingStack = createNativeStackNavigator<RoutingStackParamList>()
 // @refresh reset
 export const RoutingNavigator = () => {
+  
   return (
-    <RoutingStack.Navigator>
-      <RoutingStack.Screen name={RoutingScreens.ROUTE} component={Routing}></RoutingStack.Screen>
+    <RoutingStack.Navigator screenOptions={{ headerShown: false }}>
+      <RoutingStack.Screen name={RoutingScreens.ROUTE} component={RoutingContainer}></RoutingStack.Screen>
       <RoutingStack.Screen name={RoutingScreens.ROUTE1} component={Routing1}></RoutingStack.Screen>
       <RoutingStack.Screen name={RoutingScreens.ROUTE2} component={Routing2}></RoutingStack.Screen>
     </RoutingStack.Navigator>
