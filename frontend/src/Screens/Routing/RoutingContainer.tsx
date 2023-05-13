@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "@/Navigation";
 import { MainScreens, RootScreens, RoutingScreens } from "..";
 import { RoutingStackParamList } from "@/Navigation/Routing";
 import { Routing } from "./Routing";
-import { BottomTabParamList } from "@/Navigation/Main";
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.ROUTE

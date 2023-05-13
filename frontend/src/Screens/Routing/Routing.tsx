@@ -4,14 +4,9 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
-  SafeAreaView,
-  StatusBarProps,
-  Pressable,
-  StatusBar,
   TouchableOpacity,
 } from "react-native";
-import MapView, { Point } from "react-native-maps";
+import MapView, { Point, PROVIDER_GOOGLE } from "react-native-maps";
 import mapstyle from "../../../mapstyle.json";
 import Constants from "expo-constants";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -20,7 +15,6 @@ import {
   faArrowLeft,
   faArrowRightArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { background } from "native-base/lib/typescript/theme/styled-system";
 import { MainScreens, RootScreens } from "..";
 
 interface RoutingProps {
@@ -101,6 +95,7 @@ export const Routing = (props: RoutingProps) => {
       </View>
 
       <MapView
+        provider={PROVIDER_GOOGLE}
         className="flex-1"
         customMapStyle={mapstyle}
         initialRegion={{
