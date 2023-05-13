@@ -7,6 +7,7 @@ import{ StyleSheet } from "react-native";
 import { background } from "native-base/lib/typescript/theme/styled-system";
 import { RoutingNavigator } from "../Routing";
 import { MainScreens } from "@/Screens";
+import { SearchNavigator } from "../Search";
 
 export type BottomTabParamList = {
   [MainScreens.FIND]: undefined;
@@ -32,7 +33,7 @@ export const MainNavigator = () => {
         ),
       }}
     />  
-    <Tab.Screen name={MainScreens.FIND} component={HomeContainer} 
+    <Tab.Screen name={MainScreens.FIND} component={SearchNavigator} 
       options={{
         tabBarLabel: "Find Station",
         tabBarIcon: ({ color }) => (
