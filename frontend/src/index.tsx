@@ -6,19 +6,18 @@ import { store, persistor } from "@/Store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ApplicationNavigator } from "./Navigation";
-import { Text } from "react-native-svg";
+
 
 i18n.locale = Localization.locale;
 i18n.enableFallback = true;
-i18n.defaultLocale = Language.ENGLISH;
-
+i18n.defaultLocale = Language.VIETNAMESE;
+i18n.locale=Language.VIETNAMESE
 export default function App() {
   return (
     <NativeBaseProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ApplicationNavigator />
-          <Text className={"bg-darkblue"}>Hello</Text>
         </PersistGate>
       </Provider>
     </NativeBaseProvider>

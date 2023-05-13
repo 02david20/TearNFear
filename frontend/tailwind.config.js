@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-  "./App.{js,jsx,ts,tsx}",
-  "./src/**/*.{js,jsx,ts,tsx}",
+    "./App.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -19,8 +20,15 @@ module.exports = {
         white: '#FFFFFF',
         primary: '#007AFF',
         secondary: '#03A9F4'
-      }
+      },
     },
+    fontSize: {
+      sm: 12,
+      base: 14,
+      xl: 20,
+      heading: 24,
+      title: 30,
+    }
   },
   plugins: [],
 }

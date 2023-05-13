@@ -1,15 +1,12 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { HStack, Spinner, Heading } from "native-base";
-import { User } from "@/Services";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RoutingStackParamList } from "@/Navigation/Routing";
 import { RoutingScreens } from "..";
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
-  RoutingScreens.ROUTE2
+  RoutingScreens.ROUTE1
 >;
 
 export const Routing1 = ({
