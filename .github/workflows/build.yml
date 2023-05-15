@@ -41,11 +41,11 @@ jobs:
           path: "${{ steps.yarn-cache-path.outputs.dir }}"
           key: "${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}"
           restore-keys: "${{ runner.os }}-yarn-"
-      - name: Check directory frontend
-        run: cd frontend | pwd | ls
-
       - name: Install dependencies
-        run: yarn install --immutable
-
+        run: | 
+             cd frontend
+             yarn install --immutable
       - name: Publish build
-        run: eas build --platform android --profile preview 
+        run: | 
+             cd frontend
+             eas build --platform android --profile preview 
