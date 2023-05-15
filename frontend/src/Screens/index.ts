@@ -15,3 +15,8 @@ export enum RoutingScreens {
   ROUTE1 = "Routing1",
   ROUTE2 = "Routing2",
 }
+
+export enum SearchScreens {
+  MAP = "SearchMap",
+}
+
