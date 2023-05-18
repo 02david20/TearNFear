@@ -20,7 +20,7 @@ export const PickLocation = (props: PickLocProps) => {
         debounce={1000}
         placeholder="Search"
         query={{
-          key: Config.GOOGLE_PLACES_API_KEY,
+          key: Config.GOOGLE_API_KEY,
           language: 'vi', // language of the results
           components: 'country:vn'
         }}
