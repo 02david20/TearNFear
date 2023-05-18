@@ -4,6 +4,8 @@ import { View, Text, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
 import { User } from "@/Services";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { PROVIDER_GOOGLE } from "react-native-maps";
 
 export interface IHomeProps {
   data: User | undefined;

@@ -1,13 +1,8 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import MapView, { Point, PROVIDER_GOOGLE } from "react-native-maps";
-import mapstyle from "../../../mapstyle.json";
+import mapstyle from "../../../../../mapstyle.json";
 import Constants from "expo-constants";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
@@ -15,18 +10,14 @@ import {
   faArrowLeft,
   faArrowRightArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { MainScreens, RootScreens } from "..";
+import { MainScreens, RootScreens, RoutingScreens } from "../../..";
 
 interface RoutingProps {
-  from: Point | undefined;
-  to: Point | undefined;
-  updateFrom: (point: Point) => void;
-  updateTo: (point: Point) => void;
-  fromLocation: string | undefined;
-  toLocation: string | undefined;
-  setFromLocation: (str: string) => void;
-  setToLocation: (str: string) => void;
-  onNavigate: (screen:any) => void;
+  from: Point | null;
+  to: Point | null;
+  fromLocation: string | null;
+  toLocation: string | null;
+  onNavigate: (screen: any, params: any) => void;
 }
 
 export const Routing = (props: RoutingProps) => {
@@ -35,16 +26,22 @@ export const Routing = (props: RoutingProps) => {
       <View className="flex justify-items-center p-4 space-y-5">
         <View className="flex flex-row items-end space-x-2">
           <TouchableOpacity
-            onPress={() => props.onNavigate(MainScreens.HOME)}
+            onPress={() => props.onNavigate(MainScreens.HOME, undefined)}
           >
             <FontAwesomeIcon icon={faArrowLeft} color="white" size={20} />
           </TouchableOpacity>
-          <Text className="text-xl text-white">{i18n.t(LocalizationKey.ROUTING)}</Text>
+          <Text className="text-xl text-white">
+            {i18n.t(LocalizationKey.ROUTING)}
+          </Text>
         </View>
 
         <View className="relative">
           <View className="space-y-6">
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                props.onNavigate(RoutingScreens.PICKLOC, {type:"from"})
+              }
+            >
               <View className="flex flex-row items-end bg-white p-2">
                 <View className="flex items-center" style={styles.search}>
                   <Text className="text-xl mr-2">
@@ -62,7 +59,11 @@ export const Routing = (props: RoutingProps) => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                props.onNavigate(RoutingScreens.PICKLOC, {type:"to"})
+              }
+            >
               <View className="flex flex-row items-end bg-white p-2">
                 <View className="flex items-center" style={styles.search}>
                   <Text className="text-xl mr-2">
@@ -82,9 +83,12 @@ export const Routing = (props: RoutingProps) => {
           </View>
 
           <TouchableOpacity className="absolute top-[calc(29)%] right-0 bg-darkblue p-3 transform rotate-90">
-              <FontAwesomeIcon icon={faArrowRightArrowLeft} color="white" size={24} />
+            <FontAwesomeIcon
+              icon={faArrowRightArrowLeft}
+              color="white"
+              size={24}
+            />
           </TouchableOpacity>
-
         </View>
 
         <TouchableOpacity className="bg-white px-4 py-2 items-center w-80 self-center rounded-md">
