@@ -11,5 +11,6 @@ type SearchScreenNavigatorProps = NativeStackScreenProps<
 export const SearchMapContainer = ({
   navigation,
 }: SearchScreenNavigatorProps) => {
+
   return <SearchMap />
 };
