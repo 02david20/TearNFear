@@ -13,7 +13,7 @@ export enum MainScreens {
 export enum RoutingScreens {
   ROUTE = "Routing",
   PICKLOC = "PickLocation",
-  ROUTE2 = "Routing2",
+  PATH = "Path",
 }
 
 export enum SearchScreens {

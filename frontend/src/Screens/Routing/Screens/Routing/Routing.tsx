@@ -21,6 +21,7 @@ interface RoutingProps {
   mapRef: React.RefObject<MapView>;
   handleSwap: () => void;
   handleBackToHome: () => void;
+  handleFindPath: () => void;
   onNavigate: (screen: any, params: any) => void;
 }
 function truncateString(str: string, maxLength = 30) {
@@ -108,7 +109,10 @@ export const Routing = (props: RoutingProps) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity className="bg-white px-4 py-2 items-center w-80 self-center rounded-md">
+        <TouchableOpacity
+          className="bg-white px-4 py-2 items-center w-80 self-center rounded-md"
+          onPress={() => props.handleFindPath()}
+        >
           <Text className="text-lightblue text-xl font-bold">
             {i18n.t(LocalizationKey.FINDLOC)}
           </Text>

@@ -8511,7 +8511,7 @@
   "resolved" "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   "version" "2.1.2"
 
-"sax@>=0.6.0":
+"sax@^1.2.4", "sax@>=0.6.0":
   "integrity" "sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw=="
   "resolved" "https://registry.npmjs.org/sax/-/sax-1.2.4.tgz"
   "version" "1.2.4"
@@ -9718,6 +9718,13 @@
   dependencies:
     "simple-plist" "^1.1.0"
     "uuid" "^7.0.3"
+
+"xml-js@^1.6.11":
+  "integrity" "sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g=="
+  "resolved" "https://registry.npmjs.org/xml-js/-/xml-js-1.6.11.tgz"
+  "version" "1.6.11"
+  dependencies:
+    "sax" "^1.2.4"
 
 "xml2js@0.4.23":
   "integrity" "sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug=="
