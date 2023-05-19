@@ -14,9 +14,11 @@ import {
 } from "redux-persist";
 import { homeReducers, themeReducers } from "./reducers";
 import { routeReducers } from "./reducers/route";
+import { BUS_API } from "@/Services/busbase";
 
 const reducers = combineReducers({
   api: API.reducer,
+  busapi: BUS_API.reducer,
   theme: themeReducers,
   home: homeReducers,
   route: routeReducers,
@@ -37,7 +39,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(API.middleware);
+    }).concat(API.middleware).concat(BUS_API.middleware);
 
     // if (__DEV__ && !process.env.JEST_WORKER_ID) {
     //   const createDebugger = require("redux-flipper").default;
