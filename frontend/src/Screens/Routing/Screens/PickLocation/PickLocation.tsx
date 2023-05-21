@@ -6,17 +6,18 @@ import { GooglePlaceData, GooglePlacesAutocomplete } from "react-native-google-p
 import { Point, Routing } from "../..";
 import { Config } from "@/Config";
 import { RoutingScreens } from "@/Screens";
+import {PlaceAutocomplete, SearchResult} from "@/Components/PlaceAutoComplete";
 
 interface PickLocProps {
   onNavigate: (screen: any) => void;
-  updateLocation: (data: GooglePlaceData) => void;
+  updateLocation: (data: SearchResult) => void;
   handleSubmit: () => void;
 }
 
 export const PickLocation = (props: PickLocProps) => {
   return (
     <View style={styles.container}>
-      <GooglePlacesAutocomplete
+     {/*  <GooglePlacesAutocomplete
         debounce={1000}
         placeholder="Search"
         query={{
@@ -26,6 +27,9 @@ export const PickLocation = (props: PickLocProps) => {
         }}
         onPress={(data) => props.updateLocation(data)}
         onFail={(error) => console.error(error)}
+      /> */}
+      <PlaceAutocomplete
+        onPress={(data) => props.updateLocation(data)}
       />
       <TouchableOpacity 
         className="bg-white px-4 py-2 items-center w-80 self-center rounded-md"
