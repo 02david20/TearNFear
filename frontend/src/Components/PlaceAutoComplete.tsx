@@ -149,6 +149,9 @@ const PlaceAutocomplete = (props: SearchProps) => {
               ]}
             >
               <AutocompleteDropdown
+                textInputProps = {{
+                  placeholder: i18n.t(LocalizationKey.ADDRESS)
+                }}
                 clearOnFocus={false}
                 closeOnBlur={false}
                 useFilter={false}
@@ -169,9 +172,8 @@ const PlaceAutocomplete = (props: SearchProps) => {
 const styles = StyleSheet.create({
   scrollContainer: {},
   container: {
-    padding: 2,
+    padding: 5,
   },
-
   section: {
     marginBottom: 1,
   },

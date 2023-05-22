@@ -38,12 +38,17 @@ export const PickLocationContainer = ({
     onNavigate(RoutingScreens.ROUTE);
   };
 
+  const handlePickMap = () => {
+    navigation.navigate(RoutingScreens.PICKMAP, {type:type})
+  }
+
   return (
     <PickLocation
       onNavigate={onNavigate}
       updateLocation={dispatchToLocation}
       handleSubmit={handleSubmit}
       stopsData = {stopsData}
+      handlePickMap={handlePickMap}
     />
   );
 };

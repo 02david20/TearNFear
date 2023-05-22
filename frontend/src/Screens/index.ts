@@ -14,6 +14,7 @@ export enum RoutingScreens {
   ROUTE = "Routing",
   PICKLOC = "PickLocation",
   PATH = "Path",
+  PICKMAP = "PickMap",
 }
 
 export enum SearchScreens {
