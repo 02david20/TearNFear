@@ -14,6 +14,8 @@ export const vi = {
   [LocalizationKey.FINDLOC]: "TÌM KIẾM",
   [LocalizationKey.RECLOC]: "Tìm kiếm gần đây",
   [LocalizationKey.ADDRESS]: "Nhập địa điểm...",
+  [LocalizationKey.PICKMAP]: "Chọn điểm trên bản đồ",
+  [LocalizationKey.CHOOSE]: "Chọn địa điểm",
 
 
 };

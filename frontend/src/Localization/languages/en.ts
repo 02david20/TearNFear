@@ -14,4 +14,7 @@ export const en = {
   [LocalizationKey.FINDLOC]: "FIND",
   [LocalizationKey.RECLOC]: "Recently Location",
   [LocalizationKey.ADDRESS]: "Enter address...",
+  [LocalizationKey.PICKMAP]: "Pick Location On Map",
+  [LocalizationKey.CHOOSE]: "CHOOSE",
+
 };
