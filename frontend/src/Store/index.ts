@@ -15,6 +15,7 @@ import {
 import { homeReducers, themeReducers } from "./reducers";
 import { routeReducers } from "./reducers/route";
 import { BUS_API } from "@/Services/busbase";
+import { busStopReducers } from "./reducers/busstops";
 
 const reducers = combineReducers({
   api: API.reducer,
@@ -22,12 +23,13 @@ const reducers = combineReducers({
   theme: themeReducers,
   home: homeReducers,
   route: routeReducers,
+  busstops: busStopReducers,
 });
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["theme"],
+  whitelist: ["theme", "locations", "busapi"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

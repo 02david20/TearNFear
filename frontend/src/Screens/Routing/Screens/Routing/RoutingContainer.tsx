@@ -7,6 +7,13 @@ import { useAppDispatch, useAppSelector } from "@/Hooks/redux";
 import { resetRoute, updateLocation } from "@/Store/reducers";
 import MapView from "react-native-maps";
 import { Alert } from "react-native";
+import {
+  useGetStopsLocationQuery,
+  useGetStopsQuery,
+  useLazyGetStopsQuery,
+} from "@/Services";
+import { setStops } from "@/Store/reducers/busstops";
+import { IBusStops } from "@/Store/reducers/busstops";
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.ROUTE
@@ -20,10 +27,34 @@ export const RoutingContainer = ({
   };
   const dispatch = useAppDispatch();
   const { to, toName, from, fromName } = useAppSelector((state) => state.route);
-  const mapRef = useRef<MapView>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  let data:IBusStops;
+  const stopsQuery = useGetStopsQuery("");
+  const stopsLocationQuery = useGetStopsLocationQuery("");
 
   useEffect(() => {
-    console.log("Update From and To");
+    async function fetchData() {
+      try {
+        const _stops = await stopsQuery.refetch();
+        const _loc = await stopsLocationQuery.refetch();
+        const stops = _stops.data
+        const loc = _loc.data
+        dispatch(setStops({stops,loc}))
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  },[]);
+
+  // if(!isLoading) {
+  //   dispatch(setStops({data}))
+  // }
+
+  const mapRef = useRef<MapView>(null);
+  useEffect(() => {
     if (mapRef.current) {
       const coordinates = [
         from! && { latitude: from!.lat, longitude: from!.lng },
@@ -57,20 +88,24 @@ export const RoutingContainer = ({
   };
 
   const handleFindPath = () => {
-    if(from && to) {
+    if (from && to) {
       onNavigate(RoutingScreens.PATH, {
         from,
         to,
       });
-    }else {
-      Alert.alert('Missing Location', 'You must enter both start and destination', [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-      ]);
+    } else {
+      Alert.alert(
+        "Missing Location",
+        "You must enter both start and destination",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") },
+        ]
+      );
     }
   };
   return (
@@ -84,6 +119,7 @@ export const RoutingContainer = ({
       handleBackToHome={handleBackToHome}
       handleFindPath={handleFindPath}
       onNavigate={onNavigate}
+      isLoading={isLoading}
     />
   );
 };

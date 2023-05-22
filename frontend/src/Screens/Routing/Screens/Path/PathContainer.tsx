@@ -4,7 +4,6 @@ import { RoutingScreens } from "../../..";
 import { RoutingStackParamList } from "@/Navigation/Routing";
 import { Path } from "./Path";
 import { useLazyGetPathQuery } from "@/Services";
-
 type PathScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.PATH
