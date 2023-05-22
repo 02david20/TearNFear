@@ -13,5 +13,21 @@ export const en = {
   [LocalizationKey.TOLOC]: "To Location",
   [LocalizationKey.FINDLOC]: "FIND",
 
-  
+  [LocalizationKey.ONLPAYMENT]: "Payment",
+  [LocalizationKey.FINDBUS]: "Find bus",
+  [LocalizationKey.BUSFORCOMPANY]: "Bus for company",
+  [LocalizationKey.FEEDBACKS]: "Feedbacks",
+  [LocalizationKey.WEATHER]: "Weather",
+  [LocalizationKey.COMMUNITY]: "Community",
+  [LocalizationKey.SWITCHBOARD]: "Switchboard",
+
+  [LocalizationKey.USERNAME]:"Username:",
+  [LocalizationKey.PASSWORD]:"Password:",
+  [LocalizationKey.FULLNAME]:"Fullname:",
+  [LocalizationKey.AGE]:"Age:",
+  [LocalizationKey.ADDRESS]:"Address:",
+  [LocalizationKey.EMAIL]:"Email:",
+  [LocalizationKey.LOGIN]:"LOGIN",
+  [LocalizationKey.LOGOUT]:"LOGOUT",
+  [LocalizationKey.NULL]:"NO INFORMATION",
 };
