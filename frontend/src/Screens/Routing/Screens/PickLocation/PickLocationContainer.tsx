@@ -3,12 +3,12 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RoutingScreens } from "../../..";
 import { RoutingStackParamList } from "@/Navigation/Routing";
 import { PickLocation } from "./PickLocation";
-import { useAppDispatch } from "@/Hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/Hooks/redux";
 import { updateLocation } from "@/Store/reducers";
 import { Point } from "../..";
-import { Config } from "@/Config";
-import { GooglePlaceData } from "react-native-google-places-autocomplete";
 import { SearchResult } from "@/Components/PlaceAutoComplete";
+import { useGetStopsQuery, useLazyGetStopsQuery } from "@/Services";
+import { setStops } from "@/Store/reducers/busstops";
 type PicKLocationScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.PICKLOC
@@ -22,6 +22,8 @@ export const PickLocationContainer = ({
   const [name, setName] = useState<string>();
   const [coord, setCoord] = useState<Point>();
   const dispatch = useAppDispatch();
+  const stopsData = useAppSelector((state)=>state.busstops)
+
   const onNavigate = (screen: any) => {
     navigation.navigate(screen);
   };
@@ -41,6 +43,7 @@ export const PickLocationContainer = ({
       onNavigate={onNavigate}
       updateLocation={dispatchToLocation}
       handleSubmit={handleSubmit}
+      stopsData = {stopsData}
     />
   );
 };
