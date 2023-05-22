@@ -17,4 +17,5 @@ export const vi = {
   [LocalizationKey.PICKMAP]: "Chọn điểm trên bản đồ",
   [LocalizationKey.CHOOSE]: "Chọn địa điểm",
 
+
 };

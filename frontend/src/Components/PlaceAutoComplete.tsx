@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 5,
   },
+
   section: {
     marginBottom: 1,
   },

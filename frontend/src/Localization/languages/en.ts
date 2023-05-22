@@ -16,4 +16,5 @@ export const en = {
   [LocalizationKey.ADDRESS]: "Enter address...",
   [LocalizationKey.PICKMAP]: "Pick Location On Map",
   [LocalizationKey.CHOOSE]: "CHOOSE",
+
 };

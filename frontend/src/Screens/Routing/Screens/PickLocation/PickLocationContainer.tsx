@@ -49,6 +49,7 @@ export const PickLocationContainer = ({
       handleSubmit={handleSubmit}
       stopsData = {stopsData}
       handlePickMap={handlePickMap}
+
     />
   );
 };
