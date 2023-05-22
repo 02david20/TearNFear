@@ -28,6 +28,7 @@ const ApplicationNavigator = () => {
           component={MainNavigator}
           options={{}}
         />
+        
       </RootStack.Navigator>
     </NavigationContainer>
   );

@@ -1,9 +1,29 @@
-import React, { useMemo, useState } from 'react';
-import { View, FlatList, TouchableOpacity, Text, TextInput, ListRenderItem } from 'react-native';
-import axios from 'axios';
-import debounce from "lodash.debounce"
-import { Config } from '@/Config';
-interface SearchResult {
+import React, { useCallback, useMemo, useState } from "react";
+import {
+  View,
+  FlatList,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  ListRenderItem,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+} from "react-native";
+import axios from "axios";
+import debounce from "lodash.debounce";
+import { Config } from "@/Config";
+import { LocalizationKey, i18n } from "@/Localization";
+import {
+  AutocompleteDropdown,
+  TAutocompleteDropdownItem,
+} from "react-native-autocomplete-dropdown";
+import { ITypeaheadProps } from "native-base/lib/typescript/components/composites/Typeahead/types";
+import { BusStop } from "@/Store/reducers/busstops";
+type SearchResult = {
+  id: number;
+  title: string;
   boundingbox: [string, string, string, string];
   class: string;
   display_name: string;
@@ -16,32 +36,67 @@ interface SearchResult {
   osm_type: string;
   place_id: string;
   type: string;
-}
+};
 
 interface SearchProps {
-  debounce: number | undefined, 
-  lang: 'vn' | "en" | undefined,
-  onPress: (data:SearchResult) => void;
+  debounce: number | undefined;
+  lang: "vn" | "en" | undefined;
+  stopsData: BusStop[];
+  onPress: (data: SearchResult) => void;
 }
 
-const defautlProps:SearchProps = {
+const defautlProps: SearchProps = {
   debounce: 1000,
   lang: "en",
-  onPress: () => {}
-}
+  stopsData: [],
+  onPress: () => {},
+};
 
-const PlaceAutocomplete = (props:SearchProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
+const PlaceAutocomplete = (props: SearchProps) => {
+  const [searchQuery, setSearchQuery] = useState<string | null>("");
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [items, setItems] = useState<TAutocompleteDropdownItem[]>([
+    { id: "1", title: "" },
+  ]);
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = async (text:string) => {
+  const handleSearch = async (text: string) => {
     try {
       const response = await axios.get(
-        `https://us1.locationiq.com/v1/search.php?key=${Config.MAP_API}&q=${text},VietNam&format=json&lang=${props.lang ?? "vi"}`
-      );      
-      setResults(response.data);
+        `https://us1.locationiq.com/v1/search.php?key=${Config.MAP_API}&q=${text},VietNam&format=json`
+      );
+      let suggestion: SearchResult[] = response.data;
+      suggestion = suggestion.concat(
+        props.stopsData
+          .filter((elem) => (elem?.label?.includes(text) ?? false))
+          .map((elem) => ({
+            id: 0,
+            title: elem?.label?.toString() ?? "",
+            boundingbox: ["", "", "", ""],
+            class: "",
+            display_name: elem?.value?.toString() ?? "",
+            icon: "",
+            importance: 0,
+            lat: elem.loc.lat,
+            licence: "",
+            lon: elem.loc.lng,
+            osm_id: "",
+            osm_type: "",
+            place_id: "",
+            type: "",
+          }))
+      );
+      setLoading(false);
+      setResults(suggestion);
+      setItems(
+        suggestion.map((elem: SearchResult, index: number) => ({
+          id: (index + 1).toString(),
+          title: elem.display_name,
+        }))
+      );
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -53,42 +108,74 @@ const PlaceAutocomplete = (props:SearchProps) => {
     []
   );
 
-  const handleChangeText = (text:string) => {
+  const handleChangeText = (text: string) => {
+    setLoading(true);
     setSearchQuery(text);
     debouncedSearch(text);
   };
-    
-  const handleSelectPlace = (place:SearchResult) => {
-    setSearchQuery(place.display_name)
-    setResults([])
-    props.onPress(place)
-    // Perform additional actions with the selected place
-  };
 
-  const renderPlaceItem:ListRenderItem<SearchResult> = ({item} ) => {    
-    return (
-      <TouchableOpacity onPress={() => handleSelectPlace(item)}>
-        <Text>{item.display_name}</Text>
-      </TouchableOpacity>
+  const handleSelectPlace = (place: TAutocompleteDropdownItem) => {
+    if (!place) return;
+    const location: SearchResult | undefined = results.find(
+      (item) => item.display_name == place.title
     );
-      
-  } 
+    setSearchQuery(place.title);
+    setResults([]);
+    if(location?.lat ==="" && location?.lon==="") {
+      // Get Stop Locations
+    }
+    location && props.onPress(location);
+  };
 
   return (
     <View>
-      <TextInput
-        placeholder="Search for a place..."
-        value={searchQuery}
-        onChangeText={handleChangeText}
-      />
-      <FlatList<SearchResult>
-        data={results}
-        keyExtractor={(item:SearchResult) => item.place_id}
-        renderItem={renderPlaceItem}
-      />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        enabled
+      >
+        <ScrollView
+          nestedScrollEnabled
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+          contentInsetAdjustmentBehavior="automatic"
+          contentContainerStyle={{ margin: 0 }}
+          style={styles.scrollContainer}
+        >
+          <View style={[styles.container]}>
+            <View
+              style={[
+                styles.section,
+                Platform.select({ ios: { zIndex: 100 } }),
+              ]}
+            >
+              <AutocompleteDropdown
+                clearOnFocus={false}
+                closeOnBlur={false}
+                useFilter={false}
+                suggestionsListMaxHeight = {300}
+                onChangeText={handleChangeText}
+                onSelectItem={(item) => handleSelectPlace(item)}
+                dataSet={items}
+                loading={loading}
+              />
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 };
 
-PlaceAutocomplete.defaultProps = defautlProps
-export {PlaceAutocomplete, SearchResult};
+const styles = StyleSheet.create({
+  scrollContainer: {},
+  container: {
+    padding: 2,
+  },
+
+  section: {
+    marginBottom: 1,
+  },
+});
+
+PlaceAutocomplete.defaultProps = defautlProps;
+export { PlaceAutocomplete, SearchResult };
