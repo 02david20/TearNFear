@@ -11,4 +11,7 @@ export enum LocalizationKey {
   ROUTING="routing",
   RECLOC  = "recently location",
   ADDRESS = "address",
+  PICKMAP = "pick on map",
+  CHOOSE = "choose",
+  ROUTES = "routes"
 }

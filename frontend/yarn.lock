@@ -4925,6 +4925,11 @@
   dependencies:
     "rtl-detect" "^1.0.2"
 
+"expo-location@^15.1.1":
+  "integrity" "sha512-hoKRlmi6Ya+NeZ72Zt385SDcSsIDpJI60TCBVO+Hc9xfKA9Hyminyyo5WiwI8J03igmPTCl8Y37MxBNKY9AWkg=="
+  "resolved" "https://registry.npmjs.org/expo-location/-/expo-location-15.1.1.tgz"
+  "version" "15.1.1"
+
 "expo-manifests@~0.5.0":
   "integrity" "sha512-WnsTlE2le3pV/B/AJPKTOSjb2K9AT1mPDCfQxTQ/KMCwF95saoXYt2OPF3hxZNaMAV6VIAhXgd5Y6wpcH9ruPQ=="
   "resolved" "https://registry.npmjs.org/expo-manifests/-/expo-manifests-0.5.2.tgz"

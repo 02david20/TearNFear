@@ -28,7 +28,6 @@ export const RoutingContainer = ({
   const dispatch = useAppDispatch();
   const { to, toName, from, fromName } = useAppSelector((state) => state.route);
   const [isLoading, setIsLoading] = useState(true);
-  let data:IBusStops;
   const stopsQuery = useGetStopsQuery("");
   const stopsLocationQuery = useGetStopsLocationQuery("");
 

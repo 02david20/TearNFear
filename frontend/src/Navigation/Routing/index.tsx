@@ -4,6 +4,7 @@ import { RoutingScreens } from "@/Screens";
 import { RoutingContainer } from "@/Screens/Routing/Screens/Routing/RoutingContainer";
 import { PickLocationContainer } from "@/Screens/Routing/Screens/PickLocation/PickLocationContainer";
 import { PathContainer } from "@/Screens/Routing/Screens/Path/PathContainer";
+import { PickMapContainer } from "@/Screens/Routing/Screens/PickMap/PickMapContainer";
 
 interface Geo {
   lng: number;
@@ -18,6 +19,9 @@ export type RoutingStackParamList = {
     type: string
   };
   [RoutingScreens.ROUTE]: undefined;
+  [RoutingScreens.PICKMAP]: {
+    type: string;
+  };
 };
 
 const RoutingStack = createNativeStackNavigator<RoutingStackParamList>()
@@ -29,6 +33,7 @@ export const RoutingNavigator = () => {
       <RoutingStack.Screen name={RoutingScreens.ROUTE} component={RoutingContainer}></RoutingStack.Screen>
       <RoutingStack.Screen name={RoutingScreens.PICKLOC} component={PickLocationContainer}></RoutingStack.Screen>
       <RoutingStack.Screen name={RoutingScreens.PATH} component={PathContainer}></RoutingStack.Screen>
+      <RoutingStack.Screen name={RoutingScreens.PICKMAP} component={PickMapContainer}></RoutingStack.Screen>
     </RoutingStack.Navigator>
   );
 };

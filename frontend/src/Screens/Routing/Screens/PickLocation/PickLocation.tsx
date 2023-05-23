@@ -15,21 +15,26 @@ import {
 } from "@/Components/PlaceAutoComplete";
 import { AutocompleteDropdownContextProvider } from "react-native-autocomplete-dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { BusStop } from "@/Store/reducers/busstops";
 
 interface PickLocProps {
   stopsData: BusStop[];
   onNavigate: (screen: any) => void;
   updateLocation: (data: SearchResult) => void;
+  handlePickMap: () => void;
   handleSubmit: () => void;
 }
 
 export const PickLocation = (props: PickLocProps) => {
   return (
-    <View className="space-y-5" style={styles.container}>
-      <TouchableOpacity onPress={() => props.onNavigate(RoutingScreens.ROUTE)}>
-        <FontAwesomeIcon icon={faArrowLeft} color="black" size={20} />
+    <View style={styles.container}>
+      <TouchableOpacity
+        className="flex flex-row ml-2 space-x-2"
+        onPress={() => props.onNavigate(RoutingScreens.ROUTE)}
+      >
+        <FontAwesomeIcon icon={faArrowLeft} color="white" size={20} />
+        <Text className="text-base text-white">Back</Text>
       </TouchableOpacity>
 
       <AutocompleteDropdownContextProvider>
@@ -39,15 +44,28 @@ export const PickLocation = (props: PickLocProps) => {
         />
       </AutocompleteDropdownContextProvider>
 
-      <TouchableOpacity
-        className="bg-white px-4 py-2 items-center w-80 self-center rounded-md"
-        onPress={() => props.handleSubmit()}
-        style={{ zIndex: -1 }}
-      >
-        <Text className="text-lightblue text-xl font-bold">
-          {i18n.t(LocalizationKey.FINDLOC)}
-        </Text>
-      </TouchableOpacity>
+      <View className="space-y-5 mt-4" style={{ zIndex: -1 }}>
+        <TouchableOpacity
+          onPress={() => props.handlePickMap()}
+        >
+          <View className="flex flex-row items-end bg-white p-2 ml-2 mr-2">
+            <FontAwesomeIcon icon={faMapMarkerAlt} color="#0288D1" size={24} />
+            <Text className="text-base text-lightgray ml-2">
+              {i18n.t(LocalizationKey.PICKMAP)}
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          className="bg-white px-4 py-2 items-center w-80 self-center rounded-md"
+          onPress={() => props.handleSubmit()}
+        >
+          <Text className="text-lightblue text-xl font-bold">
+            {i18n.t(LocalizationKey.CHOOSE)}
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <View
         className="mt-10"
         style={{ flex: 1, zIndex: -1, backgroundColor: "white" }}
