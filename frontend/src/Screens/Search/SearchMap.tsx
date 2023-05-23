@@ -1,6 +1,6 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Text, Dimensions } from "react-native";
 import Constants from "expo-constants";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import mapstyle from "../../../mapstyle.json";
@@ -35,6 +35,7 @@ export const SearchMap = (props: SearchMapProps) => {
         className="flex-1"
         customMapStyle={mapstyle}
         showsUserLocation
+        style = {styles.map}
         showsMyLocationButton={true}
         initialRegion={{
           latitude: 10.772054,
@@ -44,8 +45,9 @@ export const SearchMap = (props: SearchMapProps) => {
         }}
         onRegionChangeComplete={props.handleGetStops}
       >
-        {props.markers.map((marker) => (
+        {props.markers.map((marker, index) => (
           <Marker
+            key={index}
             coordinate={{
               latitude: marker.Lat || 0,
               longitude: marker.Lng || 0,
@@ -66,6 +68,10 @@ export const SearchMap = (props: SearchMapProps) => {
 };
 
 const styles = StyleSheet.create<any>({
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
   container: {
     marginTop: Constants.statusBarHeight,
   },
