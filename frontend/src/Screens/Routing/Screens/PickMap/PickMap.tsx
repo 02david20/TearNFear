@@ -32,7 +32,7 @@ export const PickMap = (props: PickLocProps) => {
       </View>
       <TouchableOpacity className="absolute z-30 w-full bottom-10"
       onPress={() => props.handleSubmit()}>
-        <View className="flex flex-row items-end bg-white p-2 mx-10 bg-darkblue justify-center rounded-xl">
+        <View className="flex flex-row items-end p-2 mx-10 bg-darkblue justify-center rounded-xl">
           <Text className="text-xl font-bold text-white ml-2">
             {i18n.t(LocalizationKey.CHOOSE)}
           </Text>
@@ -48,8 +48,8 @@ export const PickMap = (props: PickLocProps) => {
         initialRegion={{
           latitude: 10.772054,
           longitude: 106.658168,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: 0.2922,
+          longitudeDelta: 0.2421,
         }}
         onRegionChangeComplete={props.handleChoose}
       >
