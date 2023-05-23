@@ -12,4 +12,6 @@ export const vi = {
   [LocalizationKey.FROMLOC]: "Nhập địa điểm đi",
   [LocalizationKey.TOLOC]: "Nhập địa điểm đến",
   [LocalizationKey.FINDLOC]: "TÌM KIẾM",
+  [LocalizationKey.FINDSTATION]: "Tìm kiếm trạm...",
+  [LocalizationKey.SEARCHHISTORY]: "Lịch sử tìm kiếm",
 };

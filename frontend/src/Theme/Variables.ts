@@ -9,17 +9,27 @@
  * Colors
  */
 export enum Colors {
-  TRANSPARENT = "rgba(0,0,0,0)",
-  INPUT_BACKGROUND = "#FFFFFF",
-  WHITE = "#ffffff",
-  TEXT = "#212529",
-  PRIMARY = "#E14032",
-  SUCCESS = "#28a745",
-  ERROR = "#dc3545",
+  darkblue= '#0288D1',
+  lightblue= '#00BCD4',
+  fadeblue= '#B3E5FC',
+  black= '#212121',
+  darkgray= '#757575',
+  lightgray= '#BDBDBD',
+  white= '#FFFFFF',
+  primary= '#007AFF',
+  secondary= '#03A9F4'
 }
 
 export enum NavigationColors {
-  PRIMARY = Colors.PRIMARY,
+  darkblue= Colors.darkblue,
+  lightblue= Colors.lightblue,
+  fadeblue= Colors.fadeblue,
+  black= Colors.black,
+  darkgray= Colors.darkgray,
+  lightgray= Colors.lightgray,
+  white= Colors.white,
+  primary= Colors.primary,
+  secondary= Colors.secondary
 }
 
 /**

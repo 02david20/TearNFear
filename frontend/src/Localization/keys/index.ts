@@ -9,4 +9,6 @@ export enum LocalizationKey {
   TOLOC="toloc",
   FINDLOC = "findloc",
   ROUTING="routing",
+  FINDSTATION="findstation",
+  SEARCHHISTORY="searchhistory"
 }

@@ -18,5 +18,8 @@ export enum RoutingScreens {
 
 export enum SearchScreens {
   MAP = "SearchMap",
+  LIST = "SearchList",
+  DETAIL = "Station",
+  REPORT = "Report"
 }
 

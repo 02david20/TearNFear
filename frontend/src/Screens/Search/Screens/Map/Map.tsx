@@ -3,21 +3,21 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import Constants from "expo-constants";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import mapstyle from "../../../mapstyle.json";
+import mapstyle from "../../../../../mapstyle.json";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-interface SearchMapProps {}
+import { SearchScreens, RootScreens } from "../../..";
+interface SearchMapProps {
+  onNavigate: (screen:any) => void;
+}
 
 export const SearchMap = (props: SearchMapProps) => {
   return (
     <>
-      <TouchableOpacity className="absolute z-30 w-full" style={{marginTop:Constants.statusBarHeight+20}}>
-        <View className="flex flex-row items-end bg-white p-2 mr-3 ml-3">
-          <View className="flex items-center" style={styles.search}>
-            <Text className="text-xl mr-2">{i18n.t(LocalizationKey.FROM)}</Text>
-          </View>
+      <TouchableOpacity className="absolute z-30 w-full" style={{marginTop:Constants.statusBarHeight+20}} onPress={() => props.onNavigate(SearchScreens.LIST)}>
+        <View className="flex flex-row items-end bg-white p-2 mr-3 ml-3 rounded-lg">
           <FontAwesomeIcon icon={faMapMarkerAlt} color="#0288D1" size={24} />
-          <Text className="text-xl text-lightgray ml-2">Hello</Text>
+          <Text className="text-xl text-lightgray ml-2">{i18n.t(LocalizationKey.FINDSTATION)}</Text>
         </View>
       </TouchableOpacity>
       <MapView
