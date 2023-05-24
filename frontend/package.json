@@ -29,6 +29,7 @@
     "expo-image-picker": "~14.1.1",
     "expo-localization": "~14.1.1",
     "expo-location": "^15.1.1",
+    "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
     "expo-updates": "~0.16.4",
     "i18n-js": "^4.1.1",
@@ -45,6 +46,7 @@
     "react-native-feather": "^1.1.2",
     "react-native-google-places-autocomplete": "^2.5.1",
     "react-native-maps": "^1.7.1",
+    "react-native-onboarding-swiper": "^1.2.0",
     "react-native-pager-view": "^6.2.0",
     "react-native-reanimated": "^3.1.0",
     "react-native-safe-area-context": "4.5.0",
@@ -56,8 +58,7 @@
     "redux-persist": "^6.0.0",
     "remove-accents": "^0.4.4",
     "tailwindcss": "^3.3.2",
-    "xml-js": "^1.6.11",
-    "expo-splash-screen": "~0.18.2"
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

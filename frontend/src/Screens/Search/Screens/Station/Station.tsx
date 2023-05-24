@@ -28,15 +28,9 @@ export const Station = ({onNavigate, name, address}: IStationProps) => {
             <TouchableOpacity onPress={() => onNavigate(SearchScreens.LIST)}>
               <FontAwesomeIcon icon={faArrowLeft} color="white" size={20} />
             </TouchableOpacity>
-            <View className="ml-2">
+            <View className="ml-2 p-2">
               <Text className="text-heading text-white">{name}</Text>
               <Text className="text-white">{address}</Text>
-            </View>
-          </View>
-          <View>
-            <Text className="text-white">Tìm đường</Text>
-            <View className="flex flex-row justify-center">
-              <FontAwesomeIcon icon={faMapLocationDot} color="white" size={20} />
             </View>
           </View>
         </View>

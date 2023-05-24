@@ -34,7 +34,10 @@ export const Path = (props: PickLocProps) => {
         </HStack>
       ) : (
         <>
-          <Text>{i18n.t(LocalizationKey.HOME)}</Text>
+          <StatusBar backgroundColor="#0288D1" />
+          <View className="bg-darkblue">
+            <Text className="m-4 text-xl text-white">{i18n.t(LocalizationKey.BACK)}</Text>
+          </View>
             <FlatList
               data={data}
               renderItem={({ item, index }) => (
@@ -50,8 +53,7 @@ export const Path = (props: PickLocProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    paddingTop: Constants.statusBarHeight + 10,
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: "#ecf0f1",
   },
 });
