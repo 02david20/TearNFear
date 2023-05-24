@@ -1,8 +1,14 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, Text, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+  Dimensions,
+} from "react-native";
 import Constants from "expo-constants";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import mapstyle from "../../../../../mapstyle.json";
 import { SearchScreens } from "../../..";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -12,7 +18,7 @@ import { Marker } from "react-native-maps";
 import { Config } from "@/Config";
 interface SearchMapProps {
   mapRef: React.RefObject<MapView>;
-  onNavigate: (screen:any) => void;
+  onNavigate: (screen: any) => void;
   handleGetStops: () => void;
   markers: StopInfo[];
 }
@@ -39,7 +45,7 @@ export const SearchMap = (props: SearchMapProps) => {
         className="flex-1"
         customMapStyle={mapstyle}
         showsUserLocation
-        style = {styles.map}
+        style={styles.map}
         showsMyLocationButton={true}
         initialRegion={{
           latitude: 10.772054,
@@ -56,14 +62,24 @@ export const SearchMap = (props: SearchMapProps) => {
               latitude: marker.Lat || 0,
               longitude: marker.Lng || 0,
             }}
-            title={`[${marker.Code}] ${marker.Name || ""}`}
-            description={`${marker.Name}, ${marker.Ward}, ${marker.Zone}
-              ${i18n.t(LocalizationKey.ROUTES)}: ${marker.Routes}
-              `}
           >
-            <View style = {{maxWidth: 50}}>
+            <View style={{ width: 100 }}>
               <FontAwesomeIcon icon={faBus} color="#0288D1" size={30} />
             </View>
+            <Callout
+              // key={index}
+              style={{width: 100}}
+              tooltip={true}
+            >
+              <View className="justify-center bg-white">
+                <Text className="">{`[${marker.Code}] ${marker.Name || ""}`}</Text>
+                {/* <Text>
+                  {`${marker.Name}, ${marker.Ward}, ${marker.Zone}
+                ${i18n.t(LocalizationKey.ROUTES)}: ${marker.Routes}
+                `}
+                </Text> */}
+              </View>
+            </Callout>
           </Marker>
         ))}
       </MapView>
@@ -73,8 +89,8 @@ export const SearchMap = (props: SearchMapProps) => {
 
 const styles = StyleSheet.create<any>({
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   container: {
     marginTop: Constants.statusBarHeight,

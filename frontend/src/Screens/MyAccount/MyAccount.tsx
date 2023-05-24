@@ -11,8 +11,7 @@ export const MyAccount = (props: MyAccountProps) => {
   const isLogin = false
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style = {styles.head}></View>
+      <StatusBar style="auto" backgroundColor="#0288D1"/>
       <View style={styles.stretch}>
         <Image source = {require('../../../assets/HCM.png')} style = {styles.photo} />
         <View style={{alignItems: 'flex-end',}}>
@@ -104,11 +103,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     height:'100%',
-  },
-  head:{
-    backgroundColor: '#0288D1',
-    height: '6%',
-    width: '100%',
   },
   centered: {
     justifyContent: "center",
