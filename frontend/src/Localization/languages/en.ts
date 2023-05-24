@@ -12,6 +12,8 @@ export const en = {
   [LocalizationKey.FROMLOC]: "From Location",
   [LocalizationKey.TOLOC]: "To Location",
   [LocalizationKey.FINDLOC]: "FIND",
+  [LocalizationKey.FINDSTATION]: "Find station...",
+  [LocalizationKey.SEARCHHISTORY]: "Find history",
   [LocalizationKey.RECLOC]: "Recently Location",
   [LocalizationKey.ADDRESS]: "Enter address...",
   [LocalizationKey.PICKMAP]: "Pick Location On Map",

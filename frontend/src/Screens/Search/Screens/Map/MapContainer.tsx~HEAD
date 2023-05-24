@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SearchStackParamList } from "@/Navigation/Search";
+<<<<<<< HEAD:frontend/src/Screens/Search/Screens/Map/MapContainer.tsx
+import { SearchScreens } from "../../..";
+import { SearchMap } from "./Map";
+=======
 import { SearchScreens } from "..";
 import { SearchMap } from "./SearchMap";
 import { BusStop, StopInfo, useGetStopsInboundQuery, useLazyGetStopsInboundQuery } from "@/Services";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { Marker, Stop } from "react-native-svg";
+>>>>>>> dev:frontend/src/Screens/Search/SearchMapContainer.tsx
 type SearchScreenNavigatorProps = NativeStackScreenProps<
   SearchStackParamList,
   SearchScreens.MAP
@@ -15,6 +20,13 @@ type SearchScreenNavigatorProps = NativeStackScreenProps<
 export const SearchMapContainer = ({
   navigation,
 }: SearchScreenNavigatorProps) => {
+<<<<<<< HEAD:frontend/src/Screens/Search/Screens/Map/MapContainer.tsx
+  const onNavigate = (screen:any) => {
+    navigation.navigate(screen);
+  };
+  
+  return <SearchMap onNavigate = {onNavigate}/>
+=======
   const mapRef = useRef<MapView>(null);
   const onNavigate = (screen: any) => {
     navigation.navigate(screen);
@@ -68,4 +80,5 @@ export const SearchMapContainer = ({
       markers={markers}
     />
   );
+>>>>>>> dev:frontend/src/Screens/Search/SearchMapContainer.tsx
 };

@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View, Text, Dimensions } from "react-native";
 import Constants from "expo-constants";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import mapstyle from "../../../mapstyle.json";
+import mapstyle from "../../../../../mapstyle.json";
+import { SearchScreens } from "../../..";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBus, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { StopInfo } from "@/Services";
 import { Marker } from "react-native-maps";
 interface SearchMapProps {
   mapRef: React.RefObject<MapView>;
+  onNavigate: (screen:any) => void;
   handleGetStops: () => void;
   markers: StopInfo[];
 }
@@ -20,6 +22,7 @@ export const SearchMap = (props: SearchMapProps) => {
       <TouchableOpacity
         className="absolute z-30 w-full"
         style={{ marginTop: Constants.statusBarHeight + 20 }}
+        onPress={() => props.onNavigate(SearchScreens.LIST)}
       >
         <View className="flex flex-row items-end bg-white p-2 mr-3 ml-3">
           <View className="flex items-center" style={styles.search}>
