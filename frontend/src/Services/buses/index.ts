@@ -23,6 +23,12 @@ export interface StopInfo {
   Zone: string | null;
 }
 
+type ROUTES = {
+  RouteId : string,
+  RouteName : string,
+  RouteNo : string,
+};
+
 const busApi = BUS_API.injectEndpoints({
   endpoints: (build) => ({
     getPath: build.query<any, string>({
@@ -57,6 +63,14 @@ const busApi = BUS_API.injectEndpoints({
         },
       }),
     }),
+    getRouteThroughStation: build.query<string, string>({
+      query: (path: string) => ({
+        url: `businfo/getroutesthroughstop//${path}`,
+        responseHandler: (response) => {
+          return response.text();
+        },
+      }),
+    }),
   }),
   overrideExisting: true,
 });
@@ -67,5 +81,6 @@ export const {
   useGetStopsQuery,
   useGetStopsLocationQuery,
   useGetStopsInboundQuery,
-  useLazyGetStopsInboundQuery
+  useLazyGetStopsInboundQuery,
+  useLazyGetRouteThroughStationQuery
 } = busApi;

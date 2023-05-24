@@ -28,3 +28,8 @@ export enum SearchScreens {
 export enum MyAccountScreens{
   LOGINED = "MyAccount",
 }
+
+export enum StationScreens{
+  BUS = "Bus",
+  ROUTES = "Routes",
+}

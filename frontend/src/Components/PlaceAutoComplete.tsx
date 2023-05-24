@@ -74,7 +74,7 @@ const PlaceAutocomplete = (props: SearchProps) => {
         props.stopsData
           .filter((elem) => (elem?.label?.includes(text) ?? false))
           .map((elem) => ({
-            id: 0,
+            id: parseInt(elem.id ?? ""),
             title: elem?.label?.toString() ?? "",
             boundingbox: ["", "", "", ""],
             class: "",
@@ -125,9 +125,8 @@ const PlaceAutocomplete = (props: SearchProps) => {
     );
     setSearchQuery(place.title);
     setResults([]);
-    if(location?.lat ==="" && location?.lon==="") {
-      // Get Stop Locations
-    }
+    console.log(location);
+    
     location && props.onPress(location);
   };
 
