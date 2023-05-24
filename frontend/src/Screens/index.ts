@@ -24,3 +24,6 @@ export enum SearchScreens {
   REPORT = "Report"
 }
 
+export enum MyAccountScreens{
+  LOGINED = "MyAccount",
+}
