@@ -31,10 +31,8 @@ const ApplicationNavigator = () => {
         const stops = _stops.data
         const loc = _loc.data
         dispatch(setStops({stops,loc}))
-        setIsLoading(false);
       } catch (error) {
         console.log(error);
-        setIsLoading(false);
       }
     }
     fetchData();
@@ -63,7 +61,4 @@ export { ApplicationNavigator };
     throw new Error("Function not implemented.");
   }
 
-function setIsLoading(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
 

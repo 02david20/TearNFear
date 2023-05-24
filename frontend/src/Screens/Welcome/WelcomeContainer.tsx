@@ -12,7 +12,7 @@ type WelcomeScreenNavigatorProps = NativeStackScreenProps<
 export const WelcomeContainer = ({
   navigation,
 }: WelcomeScreenNavigatorProps) => {
-  const onNavigate = (screen: RootScreens) => {
+  const onNavigate = (screen: any) => {
     navigation.navigate(screen);
   };
   const hello = 1;
