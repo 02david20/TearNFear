@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faHome, faMapMarker, faMapMarkerAlt, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import{ StyleSheet } from "react-native";
 import { background } from "native-base/lib/typescript/theme/styled-system";
-import { RoutingNavigator } from "../Routing";
 import { MainScreens } from "@/Screens";
+import { RoutingNavigator } from "../Routing";
 import { SearchNavigator } from "../Search";
-
+import { MyAccountNavigator } from "../MyAccount";
 export type BottomTabParamList = {
   [MainScreens.FIND]: undefined;
   [MainScreens.HOME]: undefined;
@@ -49,7 +49,7 @@ export const MainNavigator = () => {
         ),
       }}
     />  
-    <Tab.Screen name={MainScreens.MYACCOUNT} component={HomeContainer} 
+    <Tab.Screen name={MainScreens.MYACCOUNT} component={MyAccountNavigator} 
       options={{
         tabBarLabel: "My Account",
         tabBarIcon: ({ color }) => (

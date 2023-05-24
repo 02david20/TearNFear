@@ -1,6 +1,7 @@
 export enum RootScreens {
   MAIN = "Main",
   WELCOME = "Welcome",
+  TASK = "task"
 }
 
 export enum MainScreens {
@@ -19,5 +20,16 @@ export enum RoutingScreens {
 
 export enum SearchScreens {
   MAP = "SearchMap",
+  LIST = "SearchList",
+  DETAIL = "Station",
+  REPORT = "Report"
 }
 
+export enum MyAccountScreens{
+  LOGINED = "MyAccount",
+}
+
+export enum StationScreens{
+  BUS = "Bus",
+  ROUTES = "Routes",
+}

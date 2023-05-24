@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SearchStackParamList } from "@/Navigation/Search";
-import { SearchScreens } from "..";
-import { SearchMap } from "./SearchMap";
+import { SearchScreens } from "../../..";
+import { SearchMap } from "./Map";
 import { BusStop, StopInfo, useGetStopsInboundQuery, useLazyGetStopsInboundQuery } from "@/Services";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { Marker, Stop } from "react-native-svg";
+import { Config } from "@/Config";
 type SearchScreenNavigatorProps = NativeStackScreenProps<
   SearchStackParamList,
   SearchScreens.MAP
@@ -16,7 +17,7 @@ export const SearchMapContainer = ({
   navigation,
 }: SearchScreenNavigatorProps) => {
   const mapRef = useRef<MapView>(null);
-  const onNavigate = (screen: any) => {
+  const onNavigate = (screen:any) => {
     navigation.navigate(screen);
   };
   const [markers, setMarkers] = useState<StopInfo[]>([]);
@@ -28,12 +29,13 @@ export const SearchMapContainer = ({
     const query = `${sw?.longitude.toString()}/${sw?.latitude.toString()}/${ne?.longitude.toString()}/${ne?.latitude.toString()}`;
 
     console.log(query);
-    
-    const response = await stopsInboudQuery(query).refetch();
-    const data: string = response.data ?? "";
-    
-    const stopsList: StopInfo[] = JSON.parse(data);
-    setMarkers(stopsList);
+    if(sw?.latitude  &&  ne?.latitude && (Math.abs(sw?.latitude - ne?.latitude)<0.03)) {
+      const response = await stopsInboudQuery(query).refetch();
+      const data: string = response.data ?? "";
+      
+      const stopsList: StopInfo[] = JSON.parse(data);
+      setMarkers(stopsList);
+    }
   };
 
   useEffect(() => {
@@ -48,8 +50,8 @@ export const SearchMapContainer = ({
           mapRef.current?.animateToRegion({
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: Config.LONGITUDE_DELTA,
+            longitudeDelta: Config.LATITUDE_DELTA,
           });
           handleGetStops();
         } catch (e) {
@@ -64,6 +66,7 @@ export const SearchMapContainer = ({
   return (
     <SearchMap
       mapRef={mapRef}
+      onNavigate = {onNavigate}
       handleGetStops={handleGetStops}
       markers={markers}
     />

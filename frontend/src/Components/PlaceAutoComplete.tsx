@@ -42,6 +42,7 @@ interface SearchProps {
   debounce: number | undefined;
   lang: "vn" | "en" | undefined;
   stopsData: BusStop[];
+  placeSearch: boolean;
   onPress: (data: SearchResult) => void;
 }
 
@@ -49,6 +50,7 @@ const defautlProps: SearchProps = {
   debounce: 1000,
   lang: "en",
   stopsData: [],
+  placeSearch:true,
   onPress: () => {},
 };
 
@@ -59,18 +61,20 @@ const PlaceAutocomplete = (props: SearchProps) => {
     { id: "1", title: "" },
   ]);
   const [loading, setLoading] = useState(false);
-
   const handleSearch = async (text: string) => {
     try {
-      const response = await axios.get(
-        `https://us1.locationiq.com/v1/search.php?key=${Config.MAP_API}&q=${text},VietNam&format=json`
-      );
-      let suggestion: SearchResult[] = response.data;
+      let suggestion: SearchResult[] = [];
+      if(props.placeSearch) {
+        const response = await axios.get(
+          `https://us1.locationiq.com/v1/search.php?key=${Config.MAP_API}&q=${text},VietNam&format=json`
+        );
+         suggestion = response.data;
+      }
       suggestion = suggestion.concat(
         props.stopsData
           .filter((elem) => (elem?.label?.includes(text) ?? false))
           .map((elem) => ({
-            id: 0,
+            id: parseInt(elem.id ?? ""),
             title: elem?.label?.toString() ?? "",
             boundingbox: ["", "", "", ""],
             class: "",
@@ -121,9 +125,8 @@ const PlaceAutocomplete = (props: SearchProps) => {
     );
     setSearchQuery(place.title);
     setResults([]);
-    if(location?.lat ==="" && location?.lon==="") {
-      // Get Stop Locations
-    }
+    console.log(location);
+    
     location && props.onPress(location);
   };
 
@@ -138,6 +141,7 @@ const PlaceAutocomplete = (props: SearchProps) => {
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps="handled"
           contentInsetAdjustmentBehavior="automatic"
+          alwaysBounceHorizontal
           contentContainerStyle={{ margin: 0 }}
           style={styles.scrollContainer}
         >
