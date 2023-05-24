@@ -52,32 +52,38 @@ export const SearchList = (props: SearchListProps) => {
   return (
     <View className="flex-1 bg-white" style={styles.container}>
       <StatusBar backgroundColor="#0288D1" />
-      <View
-        className="flex flex-row items-center ml-2 mt-2 space-x-2"
-      >
+      <View className="flex flex-row items-center ml-2 mt-2 space-x-2">
         <TouchableOpacity
           onPress={() => props.onNavigate(SearchScreens.MAP, undefined)}
         >
           <FontAwesomeIcon icon={faArrowLeft} color="black" size={20} />
         </TouchableOpacity>
-        <Text className="text-18 font-bold">{i18n.t(LocalizationKey.BACK)}</Text>
+        <Text className="text-18 font-bold">
+          {i18n.t(LocalizationKey.BACK)}
+        </Text>
       </View>
-      
+
       <AutocompleteDropdownContextProvider>
-        <PlaceAutocomplete 
-        debounce={1}
-        placeSearch = {false}
-        onPress={(data) => {props.onNavigate(SearchScreens.DETAIL, data)}} stopsData={props.stopsData} />
+        <PlaceAutocomplete
+          debounce={1}
+          placeSearch={false}
+          onPress={(data) => {
+            props.onNavigate(SearchScreens.DETAIL, {
+              name: data.display_name,
+              id: data.id,
+              address: data.display_name,
+            });
+          }}
+          stopsData={props.stopsData}
+        />
       </AutocompleteDropdownContextProvider>
 
-      <View
-        className="bg-fadeblue mb-4"
-        style={[styles.title, { zIndex: -1 }]}
-      >
+      <View className="bg-fadeblue mb-4" style={[styles.title, { zIndex: -1 }]}>
         <Text className="m-1 ml-4 text-base">
           {i18n.t(LocalizationKey.SEARCHHISTORY)}
         </Text>
       </View>
+
       <FlatList
         data={place}
         style={{ zIndex: -1 }}
@@ -104,13 +110,12 @@ export const SearchList = (props: SearchListProps) => {
         keyExtractor={(item) => item.id}
       />
     </View>
-
   );
 };
 
 const styles = StyleSheet.create<any>({
   container: {
-    flex:1,
+    flex: 1,
     marginTop: Constants.statusBarHeight,
     position: "relative",
   },

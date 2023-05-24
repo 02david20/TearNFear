@@ -16,10 +16,12 @@ import { homeReducers, themeReducers } from "./reducers";
 import { routeReducers } from "./reducers/route";
 import { BUS_API } from "@/Services/busbase";
 import { busStopReducers } from "./reducers/busstops";
+import { stationReducers } from "./reducers/station";
 
 const reducers = combineReducers({
   api: API.reducer,
   busapi: BUS_API.reducer,
+  station: stationReducers,
   theme: themeReducers,
   home: homeReducers,
   route: routeReducers,
