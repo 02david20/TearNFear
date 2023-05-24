@@ -12,6 +12,7 @@ export const vi = {
   [LocalizationKey.FROMLOC]: "Nhập địa điểm đi",
   [LocalizationKey.TOLOC]: "Nhập địa điểm đến",
   [LocalizationKey.FINDLOC]: "TÌM KIẾM",
+<<<<<<< HEAD
   [LocalizationKey.ONLPAYMENT]: "Thanh toán",
   [LocalizationKey.FINDBUS]: "Tìm kiếm xe",
   [LocalizationKey.TRAVEL]: "Du lịch",
@@ -29,4 +30,13 @@ export const vi = {
   [LocalizationKey.LOGIN]:"Đăng Nhập",
   [LocalizationKey.LOGOUT]:"Đăng Xuất",
   [LocalizationKey.NULL]:"CHƯA CÓ THÔNG TIN",
+=======
+  [LocalizationKey.FINDSTATION]: "Tìm kiếm trạm...",
+  [LocalizationKey.SEARCHHISTORY]: "Lịch sử tìm kiếm",
+  [LocalizationKey.RECLOC]: "Tìm kiếm gần đây",
+  [LocalizationKey.ADDRESS]: "Nhập địa điểm...",
+  [LocalizationKey.PICKMAP]: "Chọn điểm trên bản đồ",
+  [LocalizationKey.CHOOSE]: "Chọn địa điểm",
+  [LocalizationKey.ROUTES]: "Các tuyến đi qua",
+>>>>>>> 4e41db58f0824e7b63ea7685d20dbfffa2118bcc
 };

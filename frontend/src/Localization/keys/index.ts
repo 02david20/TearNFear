@@ -9,6 +9,7 @@ export enum LocalizationKey {
   TOLOC="toloc",
   FINDLOC = "findloc",
   ROUTING="routing",
+<<<<<<< HEAD
 
   FINDBUS="findbus",
   ONLPAYMENT="onlpayment",
@@ -27,4 +28,13 @@ export enum LocalizationKey {
   LOGOUT="logout",
   LOGIN="login",
   NULL="null",
+=======
+  FINDSTATION="findstation",
+  SEARCHHISTORY="searchhistory",
+  RECLOC  = "recently location",
+  ADDRESS = "address",
+  PICKMAP = "pick on map",
+  CHOOSE = "choose",
+  ROUTES = "routes"
+>>>>>>> 4e41db58f0824e7b63ea7685d20dbfffa2118bcc
 }

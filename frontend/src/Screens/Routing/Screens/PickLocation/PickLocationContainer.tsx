@@ -3,43 +3,34 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RoutingScreens } from "../../..";
 import { RoutingStackParamList } from "@/Navigation/Routing";
 import { PickLocation } from "./PickLocation";
-import { useAppDispatch } from "@/Hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/Hooks/redux";
 import { updateLocation } from "@/Store/reducers";
 import { Point } from "../..";
-import { Config } from "@/Config";
-import { GooglePlaceData } from "react-native-google-places-autocomplete";
+import { SearchResult } from "@/Components/PlaceAutoComplete";
+import { useGetStopsQuery, useLazyGetStopsQuery } from "@/Services";
+import { setStops } from "@/Store/reducers/busstops";
 type PicKLocationScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.PICKLOC
 >;
+
 export const PickLocationContainer = ({
   navigation,
   route,
 }: PicKLocationScreenNavigatorProps) => {
   const { type } = route.params;
   const [name, setName] = useState<string>();
-  const [coord, setCoord] = useState();
+  const [coord, setCoord] = useState<Point>();
   const dispatch = useAppDispatch();
+  const stopsData = useAppSelector((state)=>state.busstops)
+
   const onNavigate = (screen: any) => {
     navigation.navigate(screen);
   };
 
-  const fetchCoordinates = async (placeId: string) => {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?key=${Config.GOOGLE_API_KEY}&place_id=${placeId}`
-      );
-      const data = await response.json();
-      const location = data.result.geometry.location;
-      setCoord(location);
-    } catch (error) {
-      console.error("Error fetching coordinates:", error);
-    }
-  };
-
-  const dispatchToLocation = async (data: GooglePlaceData) => {
-    setName(data.description);
-    fetchCoordinates(data.place_id);
+  const dispatchToLocation = async (data: SearchResult) => {
+    setName(data.display_name);
+    setCoord({ lat: parseFloat(data.lat), lng: parseFloat(data.lon) });
   };
 
   const handleSubmit = () => {
@@ -47,11 +38,18 @@ export const PickLocationContainer = ({
     onNavigate(RoutingScreens.ROUTE);
   };
 
+  const handlePickMap = () => {
+    navigation.navigate(RoutingScreens.PICKMAP, {type:type})
+  }
+
   return (
     <PickLocation
       onNavigate={onNavigate}
       updateLocation={dispatchToLocation}
       handleSubmit={handleSubmit}
+      stopsData = {stopsData}
+      handlePickMap={handlePickMap}
+
     />
   );
 };

@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SearchStackParamList } from "@/Navigation/Search";
-import { SearchScreens } from "..";
-import { SearchMap } from "./SearchMap";
+import { SearchScreens } from "../../..";
+import { SearchList } from "./Search";
 type SearchScreenNavigatorProps = NativeStackScreenProps<
   SearchStackParamList,
-  SearchScreens.MAP
+  SearchScreens.LIST
 >;
 
-export const SearchMapContainer = ({
+export const SearchListContainer = ({
   navigation,
 }: SearchScreenNavigatorProps) => {
+  const onNavigate = (screen:any, param:any) => {
+    navigation.navigate(screen, param);
+  };
 
-  return <SearchMap />
+  return <SearchList onNavigate={onNavigate}/>
 };
