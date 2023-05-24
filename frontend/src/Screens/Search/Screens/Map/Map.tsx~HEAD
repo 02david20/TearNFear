@@ -4,14 +4,16 @@ import { StyleSheet, TouchableOpacity, View, Text, Dimensions } from "react-nati
 import Constants from "expo-constants";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import mapstyle from "../../../../../mapstyle.json";
-import { SearchScreens } from "../../..";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { SearchScreens, RootScreens } from "../../..";
+interface SearchMapProps {
+  onNavigate: (screen:any) => void;
 import { faBus, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { StopInfo } from "@/Services";
 import { Marker } from "react-native-maps";
 interface SearchMapProps {
   mapRef: React.RefObject<MapView>;
-  onNavigate: (screen:any) => void;
   handleGetStops: () => void;
   markers: StopInfo[];
 }
@@ -19,17 +21,21 @@ interface SearchMapProps {
 export const SearchMap = (props: SearchMapProps) => {
   return (
     <>
+<<<<<<< HEAD:frontend/src/Screens/Search/Screens/Map/Map.tsx
+      <TouchableOpacity className="absolute z-30 w-full" style={{marginTop:Constants.statusBarHeight+20}} onPress={() => props.onNavigate(SearchScreens.LIST)}>
+        <View className="flex flex-row items-end bg-white p-2 mr-3 ml-3 rounded-lg">
+=======
       <TouchableOpacity
         className="absolute z-30 w-full"
         style={{ marginTop: Constants.statusBarHeight + 20 }}
-        onPress={() => props.onNavigate(SearchScreens.LIST)}
       >
         <View className="flex flex-row items-end bg-white p-2 mr-3 ml-3">
           <View className="flex items-center" style={styles.search}>
             <Text className="text-xl mr-2">{i18n.t(LocalizationKey.FROM)}</Text>
           </View>
+>>>>>>> dev:frontend/src/Screens/Search/SearchMap.tsx
           <FontAwesomeIcon icon={faMapMarkerAlt} color="#0288D1" size={24} />
-          <Text className="text-xl text-lightgray ml-2">Hello</Text>
+          <Text className="text-xl text-lightgray ml-2">{i18n.t(LocalizationKey.FINDSTATION)}</Text>
         </View>
       </TouchableOpacity>
       <MapView
