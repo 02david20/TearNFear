@@ -34,7 +34,9 @@ export const PickLocation = (props: PickLocProps) => {
         onPress={() => props.onNavigate(RoutingScreens.ROUTE)}
       >
         <FontAwesomeIcon icon={faArrowLeft} color="white" size={20} />
-        <Text className="text-base text-white">Back</Text>
+        <Text className="text-base text-white">
+          {i18n.t(LocalizationKey.BACK)}
+        </Text>
       </TouchableOpacity>
 
       <AutocompleteDropdownContextProvider>
@@ -45,9 +47,7 @@ export const PickLocation = (props: PickLocProps) => {
       </AutocompleteDropdownContextProvider>
 
       <View className="space-y-5 mt-4" style={{ zIndex: -1 }}>
-        <TouchableOpacity
-          onPress={() => props.handlePickMap()}
-        >
+        <TouchableOpacity onPress={() => props.handlePickMap()}>
           <View className="flex flex-row items-end bg-white p-2 ml-2 mr-2">
             <FontAwesomeIcon icon={faMapMarkerAlt} color="#0288D1" size={24} />
             <Text className="text-base text-lightgray ml-2">
