@@ -70,7 +70,7 @@ export const SearchList = (props: SearchListProps) => {
           onPress={(data) => {
             props.onNavigate(SearchScreens.DETAIL, {
               name: data.display_name,
-              id: data.id,
+              id: data.id.toString(),
               address: data.display_name,
             });
           }}

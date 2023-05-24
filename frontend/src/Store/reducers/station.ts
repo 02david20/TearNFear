@@ -11,6 +11,8 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     updateCurrentStation: (state, { payload: { id } }) => {
+      console.log(id);
+      
       if (typeof id !== "undefined") {
         state.id = id;
       }

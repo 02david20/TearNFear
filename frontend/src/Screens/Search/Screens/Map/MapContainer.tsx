@@ -17,8 +17,8 @@ export const SearchMapContainer = ({
   navigation,
 }: SearchScreenNavigatorProps) => {
   const mapRef = useRef<MapView>(null);
-  const onNavigate = (screen:any) => {
-    navigation.navigate(screen);
+  const onNavigate = (screen:any, params:any) => {
+    navigation.navigate(screen, params);
   };
   const [markers, setMarkers] = useState<StopInfo[]>([]);
   const [stopsInboudQuery] = useLazyGetStopsInboundQuery()

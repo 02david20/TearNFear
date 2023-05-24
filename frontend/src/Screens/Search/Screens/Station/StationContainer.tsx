@@ -15,11 +15,10 @@ export const StationContainer = ({
   route,
 }: SearchScreenNavigatorProps) => {
   const { id, name, address } = route.params;
-  
-  console.log(id,name,address);
-  
+
+ 
   const dispatch = useAppDispatch();
-  dispatch(updateCurrentStation(id));
+  dispatch(updateCurrentStation({id}));
   const onNavigate = (screen: any) => {
     navigation.navigate(screen);
   };

@@ -25,7 +25,4 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
-function setIsLoading(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
 

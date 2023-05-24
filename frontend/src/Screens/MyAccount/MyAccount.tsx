@@ -1,18 +1,26 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { Dimensions, StyleSheet, View, Text, Image } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCircleUser  } from "@fortawesome/free-solid-svg-icons";
 interface MyAccountProps {}
-
+const { width } = Dimensions.get('window')
+function roundOff(v:any) {
+  return Math.round(v)
+}
+function dimensions() {
+  var _borderRadius = roundOff(width),
+      _height = roundOff(width),
+      _width = roundOff(width)
+  return { _borderRadius, _height, _width }
+}
 export const MyAccount = (props: MyAccountProps) => {
   const isEdit = false
   const isLogin = false
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style = {styles.head}></View>
+      <StatusBar style="auto" backgroundColor="#0288D1"/>
       <View style={styles.stretch}>
         <Image source = {require('../../../assets/HCM.png')} style = {styles.photo} />
         <View style={{alignItems: 'flex-end',}}>
@@ -105,11 +113,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     height:'100%',
   },
-  head:{
-    backgroundColor: '#0288D1',
-    height: '6%',
-    width: '100%',
-  },
   centered: {
     justifyContent: "center",
     alignItems: "center",
@@ -123,10 +126,9 @@ const styles = StyleSheet.create({
   avatar:{
     backgroundColor: "white",
     alignSelf: 'center',
-    marginTop: -80,
-    height: 120,
-    width: 120,
-    borderRadius: 60,
+    marginTop: -dimensions()._width*0.2,
+    height: dimensions()._height*0.3,
+    width: dimensions()._width*0.3,
     zIndex: 1,
   },
   editing:{
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
   stretch: {
     backgroundColor: '#fff',
     width: '100%',
-    height: '30%',
+    height: '33%',
   },
   form:{
     justifyContent:'center',
