@@ -4,21 +4,6 @@ import Constants from "expo-constants";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBus } from "@fortawesome/free-solid-svg-icons";
 
-// const ROUTES = [
-//     {
-//         RouteId : "70",
-//         RouteNo: "50",
-//         RouteName: "Đại học Bách khoa - Đại học Quốc gia",
-//         OperationTime: "05:30 - 18:30",
-//     },
-//     {
-//         RouteId : "8",
-//         RouteNo: "08",
-//         RouteName: "Bến xe Quận 8 - Đại học Quốc gia",
-//         OperationTime: "05:30 - 20:00",
-//     },
-// ]
-
 const STOPID = 506;
 
 type ROUTES = {

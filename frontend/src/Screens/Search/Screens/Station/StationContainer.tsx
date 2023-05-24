@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SearchStackParamList } from "@/Navigation/Search";
 import { SearchScreens } from "../../..";
@@ -15,6 +15,17 @@ export const StationContainer = ({
   const onNavigate = (screen:any) => {
     navigation.navigate(screen);
   };
+
+  useEffect(() => {
+    navigation.getParent()?.setOptions({
+      tabBarStyle: {
+        display: "none"
+      }
+    });
+    return () => navigation.getParent()?.setOptions({
+      tabBarStyle: undefined
+    });
+  }, [navigation]);
 
   return <Station onNavigate = {onNavigate} name = {name}/>
 };

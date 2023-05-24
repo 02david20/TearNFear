@@ -57,7 +57,11 @@ export const Bus = () => {
                 id += 1
             }
         }
-
+        newBus.sort(function(a, b) {
+            if (a.t < b.t) return -1;
+            if (a.t > b.t) return 1;
+            return 0;
+          });
         setData(newBus);
         } catch (error) {
         console.error(error);

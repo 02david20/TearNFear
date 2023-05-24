@@ -32,7 +32,7 @@ export const SearchMap = (props: SearchMapProps) => {
           <Text className="text-xl text-lightgray ml-2">Hello</Text>
         </View>
       </TouchableOpacity>
-      <MapView
+      {/* <MapView
         ref={props.mapRef}
         provider={PROVIDER_GOOGLE}
         className="flex-1"
@@ -65,7 +65,7 @@ export const SearchMap = (props: SearchMapProps) => {
             </View>
           </Marker>
         ))}
-      </MapView>
+      </MapView> */}
     </>
   );
 };
