@@ -70,6 +70,7 @@ const PlaceAutocomplete = (props: SearchProps) => {
         );
          suggestion = response.data;
       }
+     
       suggestion = suggestion.concat(
         props.stopsData
           .filter((elem) => (elem?.label?.includes(text) ?? false))
@@ -99,7 +100,6 @@ const PlaceAutocomplete = (props: SearchProps) => {
         }))
       );
     } catch (error) {
-      console.error(error);
       setLoading(false);
     }
   };
@@ -125,8 +125,6 @@ const PlaceAutocomplete = (props: SearchProps) => {
     );
     setSearchQuery(place.title);
     setResults([]);
-    console.log(location);
-    
     location && props.onPress(location);
   };
 

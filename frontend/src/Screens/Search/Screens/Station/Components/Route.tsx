@@ -21,8 +21,10 @@ type ROUTES = {
   RouteNo: string;
 };
 
-export const Route = () => {
+export const Route = () => {  
   const STOPID = useAppSelector((state) => state.station.id);
+  console.log(STOPID);
+  
   const [routes, setRoutes] = useState<ROUTES[]>([]);
 
   const [getRouteThroughStop, { data, isLoading }] =

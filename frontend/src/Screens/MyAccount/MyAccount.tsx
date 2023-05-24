@@ -1,11 +1,20 @@
 import { i18n, LocalizationKey } from "@/Localization";
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { Dimensions, StyleSheet, View, Text, Image } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCircleUser  } from "@fortawesome/free-solid-svg-icons";
 interface MyAccountProps {}
-
+const { width } = Dimensions.get('window')
+function roundOff(v:any) {
+  return Math.round(v)
+}
+function dimensions() {
+  var _borderRadius = roundOff(width),
+      _height = roundOff(width),
+      _width = roundOff(width)
+  return { _borderRadius, _height, _width }
+}
 export const MyAccount = (props: MyAccountProps) => {
   const isEdit = false
   const isLogin = false
@@ -117,10 +126,9 @@ const styles = StyleSheet.create({
   avatar:{
     backgroundColor: "white",
     alignSelf: 'center',
-    marginTop: -80,
-    height: 120,
-    width: 120,
-    borderRadius: 60,
+    marginTop: -dimensions()._width*0.2,
+    height: dimensions()._height*0.3,
+    width: dimensions()._width*0.3,
     zIndex: 1,
   },
   editing:{
@@ -133,7 +141,7 @@ const styles = StyleSheet.create({
   stretch: {
     backgroundColor: '#fff',
     width: '100%',
-    height: '30%',
+    height: '33%',
   },
   form:{
     justifyContent:'center',

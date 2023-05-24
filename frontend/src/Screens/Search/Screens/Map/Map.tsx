@@ -18,7 +18,7 @@ import { Marker } from "react-native-maps";
 import { Config } from "@/Config";
 interface SearchMapProps {
   mapRef: React.RefObject<MapView>;
-  onNavigate: (screen: any) => void;
+  onNavigate: (screen: any, params: any) => void;
   handleGetStops: () => void;
   markers: StopInfo[];
 }
@@ -29,7 +29,7 @@ export const SearchMap = (props: SearchMapProps) => {
       <TouchableOpacity
         className="absolute z-30 w-full"
         style={{ marginTop: Constants.statusBarHeight + 20 }}
-        onPress={() => props.onNavigate(SearchScreens.LIST)}
+        onPress={() => props.onNavigate(SearchScreens.LIST, undefined)}
       >
         <View className="flex flex-row items-end bg-white p-2 mr-3 ml-3">
           <View className="flex items-center" style={styles.search}>
@@ -66,19 +66,24 @@ export const SearchMap = (props: SearchMapProps) => {
             <View style={{ width: 100 }}>
               <FontAwesomeIcon icon={faBus} color="#0288D1" size={30} />
             </View>
+
             <Callout
               // key={index}
-              style={{width: 100}}
-              tooltip={true}
+              style={{}}
+              className="bg-white"
+              onPress={()=> props.onNavigate(SearchScreens.DETAIL, {
+                id: marker.StopId,
+                address: marker.AddressNo + ", " + marker.Street + ", " + marker.Ward+ ", "+ marker.Zone,
+                name: marker.Name
+              })}
             >
-              <View className="justify-center bg-white">
-                <Text className="">{`[${marker.Code}] ${marker.Name || ""}`}</Text>
-                {/* <Text>
-                  {`${marker.Name}, ${marker.Ward}, ${marker.Zone}
-                ${i18n.t(LocalizationKey.ROUTES)}: ${marker.Routes}
-                `}
-                </Text> */}
-              </View>
+              <Text className="">{`[${marker.Code}] ${
+                marker.Name || ""
+              }`}</Text>
+              <Text>{`${marker.Name}, ${marker.Ward}, ${marker.Zone}`} </Text>
+              <Text>
+                {i18n.t(LocalizationKey.ROUTES)}: {marker.Routes}
+              </Text>
             </Callout>
           </Marker>
         ))}
