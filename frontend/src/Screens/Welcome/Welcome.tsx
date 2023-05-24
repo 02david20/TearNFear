@@ -4,7 +4,9 @@ import { View, Text, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Button } from "native-base";
 import { RootScreens } from "..";
-
+import Onboarding from "react-native-onboarding-swiper";
+import { useNavigation } from "@react-navigation/native";
+import Lottie from 'lottie-react-native';
 export const Welcome = (props: {
   onNavigate: (string: RootScreens) => void
 }) => {

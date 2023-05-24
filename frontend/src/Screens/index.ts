@@ -20,3 +20,9 @@ export enum SearchScreens {
   MAP = "SearchMap",
 }
 
+export enum MyAccountScreens{
+  LOGINED = "MyAccount",
+}
+export enum FeedbackScreens{
+  FEEDBACK = "Feedback",
+}

@@ -1,8 +1,8 @@
-import { Home } from "./Home";
+import { Onboard } from "./Onboard";
 import React, { useState, useEffect } from "react";
 import { useLazyGetUserQuery } from "@/Services";
 
-export const HomeContainer = () => {
+export const OnboardContainer = () => {
   const [userId, setUserId] = useState("9");
 
   const [fetchOne, { data, isSuccess, isLoading, isFetching, error }] =
@@ -11,6 +11,6 @@ export const HomeContainer = () => {
   useEffect(() => {
     fetchOne(userId);
   }, [fetchOne, userId]);
-  
-  return <Home data={data} isLoading={isLoading} />;
+
+  return <Onboard data={data} isLoading={isLoading} />;
 };
