@@ -13,17 +13,23 @@ import {
   REGISTER,
 } from "redux-persist";
 import { homeReducers, themeReducers } from "./reducers";
+import { routeReducers } from "./reducers/route";
+import { BUS_API } from "@/Services/busbase";
+import { busStopReducers } from "./reducers/busstops";
 
 const reducers = combineReducers({
   api: API.reducer,
+  busapi: BUS_API.reducer,
   theme: themeReducers,
   home: homeReducers,
+  route: routeReducers,
+  busstops: busStopReducers,
 });
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["theme"],
+  whitelist: ["theme", "locations", "busapi"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -35,7 +41,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(API.middleware);
+    }).concat(API.middleware).concat(BUS_API.middleware);
 
     // if (__DEV__ && !process.env.JEST_WORKER_ID) {
     //   const createDebugger = require("redux-flipper").default;
@@ -49,5 +55,8 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 setupListeners(store.dispatch);
-
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
 export { store, persistor };

@@ -10,5 +10,10 @@ export enum LocalizationKey {
   FINDLOC = "findloc",
   ROUTING="routing",
   FINDSTATION="findstation",
-  SEARCHHISTORY="searchhistory"
+  SEARCHHISTORY="searchhistory",
+  RECLOC  = "recently location",
+  ADDRESS = "address",
+  PICKMAP = "pick on map",
+  CHOOSE = "choose",
+  ROUTES = "routes"
 }
