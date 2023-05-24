@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "frontend-v2",
-    "slug": "frontend-v2",
+    "name": "Busdy",
+    "slug": "busdy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB_sRTu8rPTKrvXAklgAGTtbvUyxzvBVSs"
+        }
+      },
+      "package": "com.tearnfear.busdy"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "80db8b9d-79f7-40ab-9ff9-7bb528895de2"
+      }
+    },
+    "owner": "davidhuynh"
   }
 }

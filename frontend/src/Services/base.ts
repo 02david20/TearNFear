@@ -6,7 +6,7 @@ import {
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 
-const baseQuery = fetchBaseQuery({ baseUrl: Config.API_URL });
+const baseQuery = fetchBaseQuery({ baseUrl: Config.API_URL});
 
 const baseQueryWithInterceptor = async (
   args: string | FetchArgs,

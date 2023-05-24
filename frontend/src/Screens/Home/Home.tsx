@@ -8,6 +8,9 @@ import { User } from "@/Services";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBus } from '@fortawesome/free-solid-svg-icons';
 import LottieView from 'lottie-react-native';
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { PROVIDER_GOOGLE } from "react-native-maps";
+
 export interface IHomeProps {
   data: User | undefined;
   isLoading: boolean;

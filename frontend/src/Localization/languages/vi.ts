@@ -29,4 +29,11 @@ export const vi = {
   [LocalizationKey.LOGIN]:"Đăng Nhập",
   [LocalizationKey.LOGOUT]:"Đăng Xuất",
   [LocalizationKey.NULL]:"CHƯA CÓ THÔNG TIN",
+  [LocalizationKey.FINDSTATION]: "Tìm kiếm trạm...",
+  [LocalizationKey.SEARCHHISTORY]: "Lịch sử tìm kiếm",
+  [LocalizationKey.RECLOC]: "Tìm kiếm gần đây",
+  [LocalizationKey.ADDRESS]: "Nhập địa điểm...",
+  [LocalizationKey.PICKMAP]: "Chọn điểm trên bản đồ",
+  [LocalizationKey.CHOOSE]: "Chọn địa điểm",
+  [LocalizationKey.ROUTES]: "Các tuyến đi qua",
 };

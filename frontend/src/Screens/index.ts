@@ -12,12 +12,16 @@ export enum MainScreens {
 
 export enum RoutingScreens {
   ROUTE = "Routing",
-  ROUTE1 = "Routing1",
-  ROUTE2 = "Routing2",
+  PICKLOC = "PickLocation",
+  PATH = "Path",
+  PICKMAP = "PickMap",
 }
 
 export enum SearchScreens {
   MAP = "SearchMap",
+  LIST = "SearchList",
+  DETAIL = "Station",
+  REPORT = "Report"
 }
 
 export enum MyAccountScreens{

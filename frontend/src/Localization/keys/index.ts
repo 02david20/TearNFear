@@ -22,9 +22,15 @@ export enum LocalizationKey {
   PASSWORD="password",
   FULLNAME="fullname",
   AGE="age",
-  ADDRESS="address",
   EMAIL="email",
   LOGOUT="logout",
   LOGIN="login",
   NULL="null",
+  FINDSTATION="findstation",
+  SEARCHHISTORY="searchhistory",
+  RECLOC  = "recently location",
+  ADDRESS = "address",
+  PICKMAP = "pick on map",
+  CHOOSE = "choose",
+  ROUTES = "routes"
 }
