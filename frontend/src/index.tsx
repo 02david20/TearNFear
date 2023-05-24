@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as Localization from "expo-localization";
 import { i18n, Language } from "@/Localization";
 import { NativeBaseProvider } from "native-base";
@@ -6,6 +6,9 @@ import { store, persistor } from "@/Store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ApplicationNavigator } from "./Navigation";
+import { useGetStopsLocationQuery, useGetStopsQuery } from "./Services";
+import { useAppDispatch } from "./Hooks/redux";
+import { setStops } from "./Store/reducers/busstops";
 
 i18n.locale = Localization.locale;
 i18n.enableFallback = true;
@@ -22,3 +25,7 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
+function setIsLoading(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+

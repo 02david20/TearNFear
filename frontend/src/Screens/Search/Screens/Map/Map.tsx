@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBus, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { StopInfo } from "@/Services";
 import { Marker } from "react-native-maps";
+import { Config } from "@/Config";
 interface SearchMapProps {
   mapRef: React.RefObject<MapView>;
   onNavigate: (screen:any) => void;
@@ -43,8 +44,8 @@ export const SearchMap = (props: SearchMapProps) => {
         initialRegion={{
           latitude: 10.772054,
           longitude: 106.658168,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: Config.LONGITUDE_DELTA,
+          longitudeDelta: Config.LATITUDE_DELTA,
         }}
         onRegionChangeComplete={props.handleGetStops}
       >

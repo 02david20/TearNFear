@@ -1,19 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { MainScreens, RootScreens, RoutingScreens } from "../../..";
+import { MainScreens, RoutingScreens } from "../../..";
 import { RoutingStackParamList } from "@/Navigation/Routing";
 import { Routing } from "./Routing";
 import { useAppDispatch, useAppSelector } from "@/Hooks/redux";
 import { resetRoute, updateLocation } from "@/Store/reducers";
 import MapView from "react-native-maps";
 import { Alert } from "react-native";
-import {
-  useGetStopsLocationQuery,
-  useGetStopsQuery,
-  useLazyGetStopsQuery,
-} from "@/Services";
-import { setStops } from "@/Store/reducers/busstops";
-import { IBusStops } from "@/Store/reducers/busstops";
+
 type RoutingScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.ROUTE
@@ -27,30 +21,6 @@ export const RoutingContainer = ({
   };
   const dispatch = useAppDispatch();
   const { to, toName, from, fromName } = useAppSelector((state) => state.route);
-  const [isLoading, setIsLoading] = useState(true);
-  const stopsQuery = useGetStopsQuery("");
-  const stopsLocationQuery = useGetStopsLocationQuery("");
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const _stops = await stopsQuery.refetch();
-        const _loc = await stopsLocationQuery.refetch();
-        const stops = _stops.data
-        const loc = _loc.data
-        dispatch(setStops({stops,loc}))
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  },[]);
-
-  // if(!isLoading) {
-  //   dispatch(setStops({data}))
-  // }
 
   const mapRef = useRef<MapView>(null);
   useEffect(() => {
@@ -118,7 +88,6 @@ export const RoutingContainer = ({
       handleBackToHome={handleBackToHome}
       handleFindPath={handleFindPath}
       onNavigate={onNavigate}
-      isLoading={isLoading}
     />
   );
 };

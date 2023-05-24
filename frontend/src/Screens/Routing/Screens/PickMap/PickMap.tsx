@@ -15,6 +15,7 @@ import { faLocationCrosshairs, faMapMarked } from "@fortawesome/free-solid-svg-i
 import MapView, { Marker, PROVIDER_GOOGLE, Region } from "react-native-maps";
 import mapstyle from "../../../../../mapstyle.json";
 import { Point } from "../..";
+import { Config } from "@/Config";
 
 interface PickLocProps {
   onNavigate: (screen: any) => void;
@@ -48,8 +49,8 @@ export const PickMap = (props: PickLocProps) => {
         initialRegion={{
           latitude: 10.772054,
           longitude: 106.658168,
-          latitudeDelta: 0.2922,
-          longitudeDelta: 0.2421,
+          latitudeDelta: Config.LONGITUDE_DELTA,
+          longitudeDelta: Config.LATITUDE_DELTA,
         }}
         onRegionChangeComplete={props.handleChoose}
       >

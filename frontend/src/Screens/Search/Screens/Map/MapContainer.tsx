@@ -7,6 +7,7 @@ import { BusStop, StopInfo, useGetStopsInboundQuery, useLazyGetStopsInboundQuery
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { Marker, Stop } from "react-native-svg";
+import { Config } from "@/Config";
 type SearchScreenNavigatorProps = NativeStackScreenProps<
   SearchStackParamList,
   SearchScreens.MAP
@@ -28,12 +29,13 @@ export const SearchMapContainer = ({
     const query = `${sw?.longitude.toString()}/${sw?.latitude.toString()}/${ne?.longitude.toString()}/${ne?.latitude.toString()}`;
 
     console.log(query);
-    
-    const response = await stopsInboudQuery(query).refetch();
-    const data: string = response.data ?? "";
-    
-    const stopsList: StopInfo[] = JSON.parse(data);
-    setMarkers(stopsList);
+    if(sw?.latitude  &&  ne?.latitude && (Math.abs(sw?.latitude - ne?.latitude)<0.03)) {
+      const response = await stopsInboudQuery(query).refetch();
+      const data: string = response.data ?? "";
+      
+      const stopsList: StopInfo[] = JSON.parse(data);
+      setMarkers(stopsList);
+    }
   };
 
   useEffect(() => {
@@ -48,8 +50,8 @@ export const SearchMapContainer = ({
           mapRef.current?.animateToRegion({
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: Config.LONGITUDE_DELTA,
+            longitudeDelta: Config.LATITUDE_DELTA,
           });
           handleGetStops();
         } catch (e) {

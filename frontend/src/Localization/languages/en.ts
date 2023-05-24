@@ -19,5 +19,6 @@ export const en = {
   [LocalizationKey.PICKMAP]: "Pick Location On Map",
   [LocalizationKey.CHOOSE]: "CHOOSE",
   [LocalizationKey.ROUTES]: "Routes at stop",
+  [LocalizationKey.BACK]: "back",
 
 };

@@ -19,4 +19,6 @@ export const vi = {
   [LocalizationKey.PICKMAP]: "Chọn điểm trên bản đồ",
   [LocalizationKey.CHOOSE]: "Chọn địa điểm",
   [LocalizationKey.ROUTES]: "Các tuyến đi qua",
+  [LocalizationKey.BACK]: "Quay lại",
+
 };

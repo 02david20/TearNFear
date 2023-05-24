@@ -7,8 +7,6 @@ import { useAppDispatch, useAppSelector } from "@/Hooks/redux";
 import { updateLocation } from "@/Store/reducers";
 import { Point } from "../..";
 import { SearchResult } from "@/Components/PlaceAutoComplete";
-import { useGetStopsQuery, useLazyGetStopsQuery } from "@/Services";
-import { setStops } from "@/Store/reducers/busstops";
 type PicKLocationScreenNavigatorProps = NativeStackScreenProps<
   RoutingStackParamList,
   RoutingScreens.PICKLOC
@@ -49,7 +47,6 @@ export const PickLocationContainer = ({
       handleSubmit={handleSubmit}
       stopsData = {stopsData}
       handlePickMap={handlePickMap}
-
     />
   );
 };
