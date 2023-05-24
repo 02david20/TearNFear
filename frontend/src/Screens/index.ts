@@ -1,6 +1,7 @@
 export enum RootScreens {
   MAIN = "Main",
   WELCOME = "Welcome",
+  TASK = "task"
 }
 
 export enum MainScreens {

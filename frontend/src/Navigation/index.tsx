@@ -9,6 +9,7 @@ import { RootScreens } from "@/Screens";
 export type RootStackParamList = {
   [RootScreens.MAIN]: undefined;
   [RootScreens.WELCOME]: undefined;
+  [RootScreens.TASK]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
