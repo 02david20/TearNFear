@@ -4,16 +4,23 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { HStack, Spinner, Heading } from "native-base";
-import { User } from "@/Services";
+import { StopInfo, User } from "@/Services";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBus } from '@fortawesome/free-solid-svg-icons';
 import LottieView from 'lottie-react-native';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import mapstyle from "../../../mapstyle.json";
+import { Config } from "@/Config";
+import { MainScreens } from "..";
 
 export interface IHomeProps {
   data: User | undefined;
   isLoading: boolean;
+  mapRef: React.RefObject<MapView>;
+  handleGetStops: () => void;
+  markers: StopInfo[];
+  onNavigate: (screen:any, params:any) => void;
 }
 
 export const Home = (props: IHomeProps) => {
@@ -77,7 +84,37 @@ export const Home = (props: IHomeProps) => {
         </View>
       </View>
       <View style={styles.map}>
-
+      <MapView
+        ref={props.mapRef}
+        provider={PROVIDER_GOOGLE}
+        className="flex-1"
+        customMapStyle={mapstyle}
+        showsUserLocation
+        style={styles.map}
+        showsMyLocationButton={true}
+        initialRegion={{
+          latitude: 10.772054,
+          longitude: 106.658168,
+          latitudeDelta: Config.LONGITUDE_DELTA,
+          longitudeDelta: Config.LATITUDE_DELTA,
+        }}
+        onRegionChangeComplete={props.handleGetStops}
+      >
+        {props.markers.map((marker, index) => (
+          <Marker
+            key={index}
+            coordinate={{
+              latitude: marker.Lat || 0,
+              longitude: marker.Lng || 0,
+            }}
+            onPress={() => props.onNavigate(MainScreens.FIND, undefined)}
+          >
+            <View style={{ width: 100 }}>
+              <FontAwesomeIcon icon={faBus} color="#0288D1" size={30} />
+            </View>
+          </Marker>
+        ))}
+      </MapView>
       </View>
       <View style={styles.another_features}>
         <Text style={{paddingLeft:'5%',paddingVertical:'3%',fontWeight:'bold',}}>Các tính năng khác</Text>
