@@ -123,14 +123,16 @@ export const Bus = () => {
                   </Text>
                 </View>
               </View>
-              <View className="ml-2">
+              <View className="ml-2 w-fit mr-10">
                 <View className="flex flex-row">
                   <FontAwesomeIcon icon={faClock} color="#00BCD4" size={20} />
                   <Text className="ml-1">
                     {Math.round(parseInt(item.t) / 60)} phút
                   </Text>
                 </View>
-                <Text className="mt-2">{item.rN}</Text>
+                <View className="mt-2 pr-10 mr-10">
+                  <Text>{item.rN}</Text>
+                </View>
               </View>
             </View>
           )}
@@ -148,6 +150,7 @@ const styles = StyleSheet.create<any>({
   },
   name: {
     width: "90%",
+    height: 200,
   },
   number: {
     backgroundColor: "#007AFF",

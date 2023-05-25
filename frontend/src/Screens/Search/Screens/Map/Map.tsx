@@ -70,20 +70,25 @@ export const SearchMap = (props: SearchMapProps) => {
             <Callout
               // key={index}
               style={{}}
-              className="bg-white"
+              className="bg-white w-fit"
               onPress={()=> props.onNavigate(SearchScreens.DETAIL, {
                 id: marker.StopId,
                 address: marker.AddressNo + ", " + marker.Street + ", " + marker.Ward+ ", "+ marker.Zone,
                 name: marker.Name
               })}
             >
-              <Text className="">{`[${marker.Code}] ${
-                marker.Name || ""
-              }`}</Text>
-              <Text>{`${marker.Name}, ${marker.Ward}, ${marker.Zone}`} </Text>
-              <Text>
-                {i18n.t(LocalizationKey.ROUTES)}: {marker.Routes}
+              <Text className="">
+                <Text className="font-bold">[{marker.Code}]</Text> 
+                {marker.Name || ""}
               </Text>
+
+              <Text>{`${marker.Name}, ${marker.Ward}, ${marker.Zone}`} </Text>
+
+              <Text className="">
+                <Text className="font-bold">{i18n.t(LocalizationKey.ROUTES)}</Text> 
+                :{marker.Routes}
+              </Text>
+
             </Callout>
           </Marker>
         ))}

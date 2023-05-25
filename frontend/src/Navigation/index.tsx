@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { MainNavigator } from "./Main";
 import { WelcomeContainer } from "@/Screens/Welcome";
 import { RootScreens } from "@/Screens";
-import { useAppDispatch } from "@/Hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/Hooks/redux";
 import { useGetStopsLocationQuery, useGetStopsQuery } from "@/Services";
 import { setStops } from "@/Store/reducers/busstops";
 
@@ -20,6 +20,9 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 // @refresh reset
 const ApplicationNavigator = () => {
+  const firstTime =  useAppSelector((state) => state.theme)
+  console.log("HA",firstTime);
+  
   const dispatch = useAppDispatch()
   const stopsQuery = useGetStopsQuery("");
   const stopsLocationQuery = useGetStopsLocationQuery("");
@@ -41,10 +44,10 @@ const ApplicationNavigator = () => {
     <NavigationContainer>
       <StatusBar />
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
-        <RootStack.Screen
+        {firstTime && <RootStack.Screen
           name={RootScreens.WELCOME}
           component={WelcomeContainer}
-        />
+        />}
         <RootStack.Screen
           name={RootScreens.MAIN}
           component={MainNavigator}

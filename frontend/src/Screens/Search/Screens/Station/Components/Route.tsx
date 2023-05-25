@@ -39,6 +39,8 @@ export const Route = () => {
     setRoutes(JSON.parse(data ?? "{}"));
   }, [data]);
 
+  console.log(routes);
+  
   return isLoading ? (
     <>
       <HStack space={2} justifyContent="center">
@@ -85,7 +87,7 @@ export const Route = () => {
                 className="mt-2 pl-10 pt-2 absolute bottom-0 rounded-b-lg"
                 style={styles.time}
               >
-                {/* <Text className="font-light">Có chuyến từ {item.OperationTime}</Text> */}
+              {/* <Text className="font-light">Có chuyến từ {item.OperationTime}</Text> */}
               </View>
             </View>
           )}
@@ -103,6 +105,7 @@ const styles = StyleSheet.create<any>({
   },
   name: {
     width: "90%",
+    height: 100,
   },
   time: {
     backgroundColor: "#B3E5FC",

@@ -3,6 +3,8 @@ import { Welcome } from "./Welcome";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/Navigation";
 import { RootScreens } from "..";
+import { useAppDispatch } from "@/Hooks/redux";
+import { hideOnboarding } from "@/Store/reducers";
 
 type WelcomeScreenNavigatorProps = NativeStackScreenProps<
   RootStackParamList,
@@ -12,6 +14,7 @@ type WelcomeScreenNavigatorProps = NativeStackScreenProps<
 export const WelcomeContainer = ({
   navigation,
 }: WelcomeScreenNavigatorProps) => {
+
   const onNavigate = (screen: any) => {
     navigation.navigate(screen);
   };

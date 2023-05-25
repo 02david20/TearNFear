@@ -1,6 +1,6 @@
 import { Dimensions } from "react-native";
 
-const  LATITUDE_DELTA = 0.002
+const  LATITUDE_DELTA = 0.001
 const { height, width } = Dimensions.get( 'window' );
 
 export const Config = {

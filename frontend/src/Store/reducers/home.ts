@@ -1,26 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+interface HProps{ 
+  isLogin : Boolean
+}
+
+const initialState:HProps =  { 
+  isLogin : false
+}
 
 const slice = createSlice({
   name: "home",
-  initialState: { theme: null, darkMode: null },
+  initialState: initialState,
   reducers: {
-    actionA: (state, { payload: { theme, darkMode } }) => {
-      if (typeof theme !== "undefined") {
-        state.theme = theme;
-      }
-      if (typeof darkMode !== "undefined") {
-        state.darkMode = darkMode;
-      }
+    login: (state, {}) => {
+      state.isLogin = true;
     },
-    actionB: (state, { payload: { theme, darkMode } }) => {
-      if (!state.theme) {
-        state.theme = theme;
-        state.darkMode = darkMode;
-      }
+    logout: (state, {}) => {
+      state.isLogin = false;
     },
   },
 });
 
-export const { actionA, actionB } = slice.actions;
+export const {login, logout} = slice.actions;
 
 export const homeReducers = slice.reducer;
