@@ -33,5 +33,13 @@ export enum LocalizationKey {
   PICKMAP = "pick on map",
   CHOOSE = "choose",
   ROUTES = "routes",
-  BACK = "back"
+  BACK = "back",
+  RAISE = "raise",
+  NOTIDRIVER = "notidriver",
+  NOTI = "noti",
+  ROUTE = "route",
+  NOTIROUTE = "notiroute",
+  NOTITIME = "notitime",
+  FOLLOW = "follow",
+  ALERT = "alert",
 }

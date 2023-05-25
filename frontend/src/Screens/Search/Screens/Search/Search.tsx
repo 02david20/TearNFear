@@ -31,19 +31,9 @@ interface SearchListProps {
 
 const place = [
   {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    name: "Trường Đại học Bách Khoa - Đại học Quốc gia TP.HCM",
-    address: "268 Lý Thường Kiệt, Phường 14, Quận 10, TPHCM",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    name: "Trường Đại học Bách Khoa - Đại học Quốc gia TP.HCM",
-    address: "268 Lý Thường Kiệt, Phường 14, Quận 10, TPHCM",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    name: "Đại học Bách Khoa",
-    address: "268 Lý Thường Kiệt, Phường 14, Quận 10, TPHCM",
+    id: "506",
+    name: "[Q10 055] Đại học Bách Khoa (268 Lý Thường Kiệt, Quận 10)",
+    address: "[Q10 055] Đại học Bách Khoa (268 Lý Thường Kiệt, Quận 10)",
   },
 ];
 

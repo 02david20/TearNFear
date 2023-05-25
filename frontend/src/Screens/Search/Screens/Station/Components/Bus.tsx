@@ -13,8 +13,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { useAppSelector } from "@/Hooks/redux";
 
-const STOPID = 506;
-
 type BUS = {
   id: string;
   r: string;
@@ -40,6 +38,7 @@ type BUS = {
 // sN : string,
 // v : string,
 // vN : string,
+
 
 export const Bus = () => {
   const [isLoading, setLoading] = useState(true);

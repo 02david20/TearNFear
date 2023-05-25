@@ -38,4 +38,12 @@ export const en = {
   [LocalizationKey.LOGIN]:"LOGIN",
   [LocalizationKey.LOGOUT]:"LOGOUT",
   [LocalizationKey.NULL]:"NO INFORMATION",
+  [LocalizationKey.RAISE]: "Raise hand",
+  [LocalizationKey.NOTIDRIVER]: "Inform the driver you need to pick up",
+  [LocalizationKey.NOTI]: "Notify",
+  [LocalizationKey.ROUTE]: "Route no",
+  [LocalizationKey.NOTIROUTE]: "Notify when this bus line is approaching",
+  [LocalizationKey.NOTITIME]: "Notify after ... min",
+  [LocalizationKey.FOLLOW]: "Follow",
+  [LocalizationKey.ALERT]: "Notify",
 };

@@ -110,6 +110,6 @@ const styles = StyleSheet.create<any>({
   time: {
     backgroundColor: "#B3E5FC",
     width: "100%",
-    height: 35,
+    height: 15,
   },
 });
