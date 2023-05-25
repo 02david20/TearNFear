@@ -37,5 +37,12 @@ export const vi = {
   [LocalizationKey.CHOOSE]: "Chọn địa điểm",
   [LocalizationKey.ROUTES]: "Các tuyến đi qua",
   [LocalizationKey.BACK]: "Quay lại",
-
+  [LocalizationKey.RAISE]: "Đón xe",
+  [LocalizationKey.NOTIDRIVER]: "Thông báo cho tài xế bạn cần đón tuyến này",
+  [LocalizationKey.NOTI]: "Thông báo ngay",
+  [LocalizationKey.ROUTE]: "Tuyến số",
+  [LocalizationKey.NOTIROUTE]: "Thông báo khi tuyến xe này đến gần",
+  [LocalizationKey.NOTITIME]: "Thông báo sau ... phút",
+  [LocalizationKey.FOLLOW]: "Theo dõi ngay",
+  [LocalizationKey.ALERT]: "Báo xe đến",
 };
